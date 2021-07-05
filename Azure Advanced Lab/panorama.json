@@ -1,0 +1,404 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "comments": "This template is released under an as-is, it is used for the PS Regional Summit 2021.",
+        "author": "Torsten Stern (tostern@paloaltonetworks.com)"
+  },
+    "parameters": {
+        "VNETOption": {
+            "defaultValue": "Create new VNET",
+            "allowedValues": [
+                "Create new VNET",
+                "Use existing VNET"
+            ],
+            "type": "string",
+            "metadata": {
+                "description": "If creating a new VNET, anything not specified in the template will be deleted."
+            }
+        },
+        "VNETResourceGroup": {
+            "defaultValue": "",
+            "type": "string",
+            "metadata": {
+                "description": "If you are deploying a VNET to a different resource than the firewalls, the resource group MUST exist before launch.  If deploying a VNET to the same resource group as the firewalls, leave the field blank or enter the main resource group name."
+            }
+        },
+        "VNETName": {
+            "defaultValue": "vnet",
+            "type": "string",
+            "metadata": {
+                "description": "Enter a name for the virtual network."
+            }
+        },
+        "VNETPrefix": {
+            "defaultValue": "10.100.1.0/24",
+            "type": "string",
+            "metadata": {
+                "description": "Enter a prefix for the virtual network."
+            }
+        },
+        "ManagementSubnetName": {
+            "defaultValue": "management",
+            "type": "string",
+            "metadata": {
+                "description": "Enter a subnet name for the firewall's management interface."
+            }
+        },
+        "ManagementSubnetPrefix": {
+            "defaultValue": "10.100.1.0/25",
+            "type": "string",
+            "metadata": {
+                "description": "Enter a subnet prefix for the management subnet."
+            }
+        },
+        "PanoramaName": {
+            "defaultValue": "panorama",
+            "type": "string",
+            "metadata": {
+                "description": "Enter a name for Panorama."
+            }
+        },
+        "PanoramaManagementIP": {
+            "defaultValue": "10.100.1.4",
+            "type": "string",
+            "metadata": {
+                "description": "Enter a private IP address for Panorama's management interface."
+            }
+        },
+        "applyPublicIPToPanorama": {
+            "defaultValue": "Yes",
+            "allowedValues": [
+                "Yes",
+                "No"
+            ],
+            "type": "string",
+            "metadata": {
+                "description": "Select 'Yes' to add a public IP to Panorama's management interface."
+            }
+        },
+        "panoramaLicenseType": {
+            "defaultValue": "byol",
+            "allowedValues": [
+                "byol"
+            ],
+            "type": "string",
+            "metadata": {
+                "description": "Panorama is presently available only as a BYOL model."
+            }
+        },
+        "PanoramaSize": {
+            "defaultValue": "Standard_DS5_v2",
+            "allowedValues": [
+                "Standard_DS5_v2",
+                "Standard_D16_v3",
+                "Standard_D8_v3",
+                "Standard_D4_v2"
+            ],
+            "type": "string",
+            "metadata": {
+                "description": "Select a VM size for Panorama."
+            }
+        },
+        "PanoramaVersion": {
+            "defaultValue": "latest",
+            "allowedValues": [
+                "latest",
+                "9.0.5"
+            ],
+            "type": "string",
+            "metadata": {
+                "description": "Select the Panorama version to deploy.  Selecting 'Latest' deploys the latest available image on the Azure Marketplace."
+            }
+        },
+        "OSDiskType": {
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Premium_LRS"
+            ],
+            "type": "string",
+            "metadata": {
+                "description": "Select the storage type for the OS disk - Panorama. More info: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview"
+            }
+        },
+        "NSGName": {
+            "defaultValue": "panw-nsg",
+            "type": "string",
+            "metadata": {
+                "description": "Enter a base name for the NSG.  The name entered will have '-mgmt' appended for the mangement NSG and '-untrust' for the untrust NSG."
+            }
+        },
+        "NSGSourcePrefix": {
+            "defaultValue": "0.0.0.0/0",
+            "type": "string",
+            "metadata": {
+                "description": "Enter a valid address prefix. This address will be able to access the firewall's management interface over TCP/443 (GUI), and TCP/22 (Terminal)."
+            }
+        },
+        "username": {
+            "defaultValue": "paloalto",
+            "type": "string",
+            "metadata": {
+                "description": "Enter the firewall's administrator username. DO NOT USE ADMIN OR ROOT."
+            }
+        },
+        "password": {
+            "minLength": 12,
+            "maxLength": 72,
+            "type": "securestring",
+            "metadata": {
+                "description": "Enter the firewall's administrator password. Password must be 12-72 characters and must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character that is not a slash or hyphen."
+            }
+        },
+        "optional-AppendStringToResources": {
+            "defaultValue": "",
+            "type": "string",
+            "metadata": {
+                "description": "If the NAME and CONFIGURATION of the created LBs/NSGs/VMs/AVSET/VNET match an existing LBs/NSGs/VMs/AVSET/VNET in the SAME resource group, the template will its skip creation.  If the new resource NAME matches, but the resource CONFIGURATION does not, the template will fail or will overwrite the existing resource."
+            }
+        }
+    },
+    "variables": {
+        "COMMENT_global": "GLOBAL VARIABLES SHARED AMONG DEPLOYED RESOURCES",
+        "global_var_resource_group": "[resourceGroup().name]",
+        "global_var_appendedString": "[if(equals(parameters('optional-AppendStringToResources'), ''), '', parameters('optional-AppendStringToResources'))]",
+        "global_var_idleTimeoutInMinutes": 4,
+        "global_var_allocationMethod": "Static",
+        "global_var_networkVersion": "IPv4",
+        "global_var_apiVersion": "2018-06-01",
+        "global_var_tier": "Regional",
+        "global_var_sku": "Standard",
+        "global_vnet_name": "[if(equals(parameters('VNETOption'), 'Use existing VNET'), parameters('VNETName'), take(replace(concat(parameters('VNETName'), variables('global_var_appendedString')), ' ', ''), 64))]",
+        "global_vnet_resource_group": "[if(equals(parameters('VNETResourceGroup'), ''), variables('global_var_resource_group'), parameters('VNETResourceGroup'))]",
+        "global_vnet_option": "[parameters('VNETOption')]",
+        "global_vnet_subnet0_name": "[take(replace(parameters('ManagementSubnetName'), ' ', ''), 80)]",
+        "global_fw_mgmtnsg_name": "[take(replace(concat(parameters('NSGName'), '-mgmt', variables('global_var_appendedString')), ' ', ''), 80)]",
+        "global_fw_adminUsername": "[parameters('username')]",
+        "global_fw_adminPassword": "[parameters('password')]",
+        "global_fw_storageAccountType": "[parameters('OSDiskType')]",
+        "global_panorama_pip_option": "[parameters('applyPublicIPToPanorama')]",
+        "global_panorama_publisher": "paloaltonetworks",
+        "global_panorama_license": "[parameters('panoramaLicenseType')]",
+        "global_panorama_product": "panorama",
+        "global_panorama_version": "[parameters('PanoramaVersion')]",
+        "global_panorama_vmSize": "[parameters('PanoramaSize')]",
+        "COMMENT_nsg": "NSG TEMPLATE VARIABLES",
+        "nsg_mgmt_inbound_rule_name": "allow-inbound-management",
+        "nsg_mgmt_inbound_rule_sourceAddress": "[parameters('NSGSourcePrefix')]",
+        "nsg_mgmt_inbound_rule_ports": [
+            "22",
+            "443",
+            "3978",
+            "80"
+        ],
+        "nsg_data_inbound_rule_name": "allow-all-inbound",
+        "nsg_data_outbound_rule_name": "allow-all-outbound",
+        "COMMENT_vnet": "NEW VNET TEMPLATE VARIABLES",
+        "vnet_cidr": "[parameters('VNETPrefix')]",
+        "vnet_subnet0_cidr": "[parameters('ManagementSubnetPrefix')]",
+        "COMMENT_panorama": "Panorama TEMPLATE VARIABLES",
+        "panorama_computerName": "[take(replace(replace(concat(parameters('PanoramaName'), variables('global_var_appendedString')), ' ', ''), '_', ''), 64)]",
+        "panorama_interface_name": "[take(replace(concat(parameters('PanoramaName'), '-nic', variables('global_var_appendedString')), ' ', ''), 80)]",
+        "panorama_interface_ip": "[parameters('PanoramaManagementIP')]",
+        "panorama_pip_name": "[take(replace(concat(parameters('PanoramaName'), '-pip', variables('global_var_appendedString')), ' ', ''), 80)]",
+        "panorama_pip_id": {
+            "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('panorama_pip_name'))]"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "[variables('global_var_apiVersion')]",
+            "name": "CREATE_NSG",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": [
+                        {
+                            "type": "Microsoft.Network/networkSecurityGroups",
+                            "name": "[variables('global_fw_mgmtnsg_name')]",
+                            "apiVersion": "[variables('global_var_apiVersion')]",
+                            "location": "[resourceGroup().location]",
+                            "properties": {
+                                "securityRules": [
+                                    {
+                                        "name": "[variables('nsg_mgmt_inbound_rule_name')]",
+                                        "properties": {
+                                            "protocol": "Tcp",
+                                            "sourcePortRange": "*",
+                                            "sourceAddressPrefix": "[variables('nsg_mgmt_inbound_rule_sourceAddress')]",
+                                            "destinationAddressPrefix": "*",
+                                            "access": "Allow",
+                                            "priority": "100",
+                                            "direction": "Inbound",
+                                            "sourcePortRanges": [],
+                                            "destinationPortRanges": "[variables('nsg_mgmt_inbound_rule_ports')]",
+                                            "sourceAddressPrefixes": [],
+                                            "destinationAddressPrefixes": []
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "resourceGroup": "[resourceGroup().name]"
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "[variables('global_var_apiVersion')]",
+            "name": "CREATE_VNET",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": [
+                        {
+                            "type": "Microsoft.Network/virtualNetworks",
+                            "name": "[variables('global_vnet_name')]",
+                            "apiVersion": "[variables('global_var_apiVersion')]",
+                            "location": "[resourceGroup().location]",
+                            "properties": {
+                                "addressSpace": {
+                                    "addressPrefixes": [
+                                        "[variables('vnet_cidr')]"
+                                    ]
+                                },
+                                "subnets": [
+                                    {
+                                        "name": "[variables('global_vnet_subnet0_name')]",
+                                        "properties": {
+                                            "addressPrefix": "[variables('vnet_subnet0_cidr')]"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "resourceGroup": "[variables('global_vnet_resource_group')]",
+            "condition": "[equals(variables('global_vnet_option'), 'Create new VNET')]"
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "[variables('global_var_apiVersion')]",
+            "name": "CREATE_Panorama",
+            "dependsOn": [
+                "CREATE_VNET",
+                "CREATE_NSG"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": [
+                        {
+                            "condition": "[equals(variables('global_panorama_pip_option'), 'Yes')]",
+                            "type": "Microsoft.Network/publicIPAddresses",
+                            "sku": {
+                                "name": "[variables('global_var_sku')]",
+                                "tier": "[variables('global_var_tier')]"
+                            },
+                            "name": "[variables('panorama_pip_name')]",
+                            "apiVersion": "[variables('global_var_apiVersion')]",
+                            "location": "[resourceGroup().location]",
+                            "properties": {
+                                "publicIPAddressVersion": "[variables('global_var_networkVersion')]",
+                                "publicIPAllocationMethod": "[variables('global_var_allocationMethod')]",
+                                "idleTimeoutInMinutes": "[variables('global_var_idleTimeoutInMinutes')]"
+                            }
+                        },
+                        {
+                            "type": "Microsoft.Network/networkInterfaces",
+                            "name": "[variables('panorama_interface_name')]",
+                            "apiVersion": "[variables('global_var_apiVersion')]",
+                            "location": "[resourceGroup().location]",
+                            "properties": {
+                                "ipConfigurations": [
+                                    {
+                                        "name": "ipconfig1",
+                                        "properties": {
+                                            "privateIpAddress": "[variables('panorama_interface_ip')]",
+                                            "privateIPAllocationMethod": "[variables('global_var_allocationMethod')]",
+                                            "publicIpAddress": "[if(equals(variables('global_panorama_pip_option'), 'Yes'), variables('panorama_pip_id'), json('null'))]",
+                                            "subnet": {
+                                                "id": "[concat(resourceId(variables('global_vnet_resource_group'), 'Microsoft.Network/virtualNetworks', variables('global_vnet_name')), '/subnets/', variables('global_vnet_subnet0_name'))]"
+                                            },
+                                            "primary": true,
+                                            "privateIPAddressVersion": "[variables('global_var_networkVersion')]"
+                                        }
+                                    }
+                                ],
+                                "enableIPForwarding": false,
+                                "networkSecurityGroup": {
+                                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('global_fw_mgmtnsg_name'))]"
+                                },
+                                "tapConfigurations": []
+                            },
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Network/publicIPAddresses/', variables('panorama_pip_name'))]"
+                            ]
+                        },
+                        {
+                            "type": "Microsoft.Compute/virtualMachines",
+                            "name": "[variables('panorama_computerName')]",
+                            "apiVersion": "[variables('global_var_apiVersion')]",
+                            "location": "[resourceGroup().location]",
+                            "plan": {
+                                "name": "[variables('global_panorama_license')]",
+                                "product": "[variables('global_panorama_product')]",
+                                "publisher": "[variables('global_panorama_publisher')]"
+                            },
+                            "properties": {
+                                "hardwareProfile": {
+                                    "vmSize": "[variables('global_panorama_vmSize')]"
+                                },
+                                "storageProfile": {
+                                    "imageReference": {
+                                        "publisher": "[variables('global_panorama_publisher')]",
+                                        "offer": "[variables('global_panorama_product')]",
+                                        "sku": "[variables('global_panorama_license')]",
+                                        "version": "[variables('global_panorama_version')]"
+                                    },
+                                    "osDisk": {
+                                        "createOption": "FromImage",
+                                        "caching": "ReadWrite",
+                                        "managedDisk": {
+                                            "storageAccountType": "[variables('global_fw_storageAccountType')]"
+                                        }
+                                    }
+                                },
+                                "osProfile": {
+                                    "computerName": "[variables('panorama_computerName')]",
+                                    "adminUsername": "[variables('global_fw_adminUsername')]",
+                                    "adminPassword": "[variables('global_fw_adminPassword')]"
+                                },
+                                "networkProfile": {
+                                    "networkInterfaces": [
+                                        {
+                                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('panorama_interface_name'))]",
+                                            "properties": {
+                                                "primary": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Network/networkInterfaces', variables('panorama_interface_name'))]"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "resourceGroup": "[resourceGroup().name]"
+        }
+    ]
+}
