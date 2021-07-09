@@ -4,16 +4,354 @@
   "metadata": {
     "comments": "This template is released under an as-is, it is used for the PS Azure Basic Training.",
     "author": "Torsten Stern (tostern@paloaltonetworks.com)"
-  },
+    },
   "parameters": {
+    "VNETOption": {
+      "type": "string",
+      "defaultValue": "Create new VNET",
+      "allowedValues": [
+        "Create new VNET",
+        "Use existing VNET"
+      ],
+      "metadata": {
+        "description": "If creating a new VNET, anything not specified in the template will be deleted."
+      }
+    },
+    "VNETResourceGroup": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "If you are deploying a VNET to a different resource than the firewalls, the resource group MUST exist before launch.  If deploying a VNET to the same resource group as the firewalls, leave the field blank or enter the main resource group name."
+      }
+    },
+    "VNETName": {
+      "type": "string",
+      "defaultValue": "vmseries-vnet",
+      "metadata": {
+        "description": "Enter a name for the virtual network."
+      }
+    },
+    "VNETPrefix": {
+      "type": "string",
+      "defaultValue": "10.0.0.0/16",
+      "metadata": {
+        "description": "Enter a prefix for the virtual network."
+      }
+    },
+    "subnetName-Management": {
+      "type": "string",
+      "defaultValue": "mgmt-subnet",
+      "metadata": {
+        "description": "Enter a subnet name for the firewall's management interface."
+      }
+    },
+    "subnetName-Dataplane1": {
+      "type": "string",
+      "defaultValue": "untrust-subnet",
+      "metadata": {
+        "description": "Enter a subnet name for the firewall's first dataplane interface."
+      }
+    },
+    "subnetName-Dataplane2": {
+      "type": "string",
+      "defaultValue": "trust-subnet",
+      "metadata": {
+        "description": "Enter a subnet name for the firewall's second dataplane interface."
+      }
+    },
+    "subnetName-InternalLB": {
+      "type": "string",
+      "defaultValue": "lb-subnet",
+      "metadata": {
+        "description": "Enter the subnet name for the internal load balancer."
+      }
+    },
+    "subnetPrefix-Management": {
+      "type": "string",
+      "defaultValue": "10.0.0.0/24",
+      "metadata": {
+        "description": "Enter a subnet prefix for the firewall's management interface."
+      }
+    },
+    "subnetPrefix-Dataplane1": {
+      "type": "string",
+      "defaultValue": "10.0.1.0/24",
+      "metadata": {
+        "description": "Enter a subnet prefix for the firewall's first dataplane interface."
+      }
+    },
+    "subnetPrefix-Dataplane2": {
+      "type": "string",
+      "defaultValue": "10.0.2.0/24",
+      "metadata": {
+        "description": "Enter a subnet prefix for the firewall's second dataplane interface."
+      }
+    },
+    "subnetPrefix-InternalLB": {
+      "type": "string",
+      "defaultValue": "10.0.3.0/24",
+      "metadata": {
+        "description": "Enter a subnet prefix for the internal load balancer."
+      }
+    },
+    "publicLBName": {
+      "type": "string",
+      "defaultValue": "vmseries-public-lb",
+      "metadata": {
+        "description": "Enter a name for the public load balancer."
+      }
+    },
+    "publicLBAllowedPorts": {
+      "type": "string",
+      "defaultValue": "80, 443, 22, 3389",
+      "metadata": {
+        "description": "In a comma separated list, enter the ports you want to allow in the public load balancer's rule base.  Every port entered will create an additional rule (i.e. 4 ports = 4 rules)."
+      }
+    },
+    "internalLBName": {
+      "type": "string",
+      "defaultValue": "vmseries-internal-lb",
+      "metadata": {
+        "description": "Enter a name for the internal load balancer."
+      }
+    },
+    "internalLBAddress": {
+      "type": "string",
+      "defaultValue": "10.0.3.100",
+      "metadata": {
+        "description": "Enter the frontend private IP of the internal load balancer.  The address must be within the load balancer subnet prefix."
+      }
+    },
+    "healthProbePort": {
+      "type": "string",
+      "defaultValue": "80",
+      "allowedValues": [
+        "80",
+        "443"
+      ],
+      "metadata": {
+        "description": "Select a TCP port for the load balancer's health monitoring."
+      }
+    },
+    "FW1-Name": {
+      "type": "string",
+      "defaultValue": "vmseries-fw-vm1",
+      "metadata": {
+        "description": "Enter a name for the first firewall."
+      }
+    },
+    "FW1-IPManagement": {
+      "type": "string",
+      "defaultValue": "10.0.0.4",
+      "metadata": {
+        "description": "Enter a private IP address for firewall-1's management interface."
+      }
+    },
+    "FW1-IPDataplane1": {
+      "type": "string",
+      "defaultValue": "10.0.1.4",
+      "metadata": {
+        "description": "Enter a private IP address for firewall-1's first dataplane interface."
+      }
+    },
+    "FW1-IPDataplane2": {
+      "type": "string",
+      "defaultValue": "10.0.2.4",
+      "metadata": {
+        "description": "Enter a private IP address for firewall-1's second dataplane interface."
+      }
+    },
+    "FW2-Name": {
+      "type": "string",
+      "defaultValue": "vmseries-fw-vm2",
+      "metadata": {
+        "description": "Enter a name for the second firewall."
+      }
+    },
+    "FW2-IPManagement": {
+      "type": "string",
+      "defaultValue": "10.0.0.5",
+      "metadata": {
+        "description": "Enter a private IP address for firewall-2's management interface."
+      }
+    },
+    "FW2-IPDataplane1": {
+      "type": "string",
+      "defaultValue": "10.0.1.5",
+      "metadata": {
+        "description": "Enter a private IP address for firewall-2's first dataplane interface."
+      }
+    },
+    "FW2-IPDataplane2": {
+      "type": "string",
+      "defaultValue": "10.0.2.5",
+      "metadata": {
+        "description": "Enter a private IP address for firewall-2's second dataplane interface."
+      }
+    },
     "licenseType": {
       "type": "string",
       "defaultValue": "byol",
       "allowedValues": [
-        "byol"
+        "byol",
+        "bundle1",
+        "bundle2"
       ],
       "metadata": {
         "description": "More info: https://docs.paloaltonetworks.com/vm-series/8-1/vm-series-deployment/license-the-vm-series-firewall/license-typesvm-series-firewalls"
+      }
+    },
+    "PANOSVersion": {
+      "type": "string",
+      "defaultValue": "latest",
+      "allowedValues": [
+        "latest",
+        "9.1.0",
+        "10.0.1"
+      ],
+      "metadata": {
+        "description": "Select the PAN-OS version to deploy.  Selecting 'Latest' deploys the latest available image on the Azure Marketplace."
+      }
+    },
+    "VMSize": {
+      "type": "string",
+      "defaultValue": "Standard_DS3_v2",
+      "allowedValues": [
+        "Standard_D3_v2",
+        "Standard_D4_v2",
+        "Standard_DS3_v2",
+        "Standard_DS4_v2",
+        "Standard_DS5_v2"
+      ],
+      "metadata": {
+        "description": "Select a VM size for the firewalls."
+      }
+    },
+    "OSDiskType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Select the storage type for the firewall's OS disk. More info: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview"
+      }
+    },
+    "availabilitySetOption": {
+      "type": "string",
+      "defaultValue": "Create new availability set",
+      "allowedValues": [
+        "Create new availability set",
+        "Use existing availability set - Must be in firewall/main resource group",
+        "Do not use availability set"
+      ],
+      "metadata": {
+        "description": "Select an option for the firewall's availability set.  The availability set uses 'aligned' as the SKU."
+      }
+    },
+    "availabilitySetName": {
+      "type": "string",
+      "defaultValue": "vmseries-fw-as",
+      "metadata": {
+        "description": "Enter a name for the firewall's availability set.  If you are not using an availability set, enter any string."
+      }
+    },
+    "acceleratedNetworking": {
+      "type": "string",
+      "defaultValue": "enable",
+      "allowedValues": [
+        "enable (Only supported on PAN-OS 9.0 or greater)",
+        "disable"
+      ],
+      "metadata": {
+        "description": "Enable accelerated networking on the firewall's interfaces.  Only enable if you are deploying PAN-OS 9.0 or greater."
+      }
+    },
+    "applyPublicIPToManagement": {
+      "type": "string",
+      "defaultValue": "Yes",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "metadata": {
+        "description": "Select 'Yes' to add a public IP to the firewall's management interface."
+      }
+    },
+    "applyPublicIPToDataplane1": {
+      "type": "string",
+      "defaultValue": "Yes",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "metadata": {
+        "description": "Select 'Yes' to add a public IP to the firewall's first dataplane interface (i.e. untrust-interface)."
+      }
+    },
+    "NSGName": {
+      "type": "string",
+      "defaultValue": "vmseries-nsg",
+      "metadata": {
+        "description": "Enter a name for firewall NSG.  The name entered will have '-mgmt' appended for the mangement NSG and '-data' for the dataplane NSG."
+      }
+    },
+    "NSGSourcePrefix": {
+      "type": "string",
+      "defaultValue": "0.0.0.0/0",
+      "metadata": {
+        "description": "Enter a valid address prefix. This address will be able to access the firewall's management interface over TCP/443 (GUI), and TCP/22 (Terminal)."
+      }
+    },
+    "username": {
+      "type": "string",
+      "defaultValue": "paloalto",
+      "metadata": {
+        "description": "Enter the firewall's administrator username. DO NOT USE ADMIN OR ROOT."
+      }
+    },
+    "password": {
+      "type": "securestring",
+      "minLength": 12,
+      "maxLength": 72,
+      "metadata": {
+        "description": "Enter the firewall's administrator password. Password must be 12-72 characters and must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character that is not slash or hyphen."
+      }
+    },
+    "optional-BootstrapStorageAccount": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "(Optional) To bootstrap the firewalls, enter the Azure storage account name that contains the bootstrap file share."
+      }
+    },
+    "optional-BootstrapAccessKey": {
+      "type": "securestring",
+      "defaultValue": "",
+      "metadata": {
+        "description": "(Optional) To bootstrap the firewalls, enter the Azure storage account access key."
+      }
+    },
+    "optional-BootstrapFileShareName": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "(Optional) To bootstrap the firewalls, enter the name of the Azure storage account file share that contains the bootstrap configuration."
+      }
+    },
+    "optional-BootstrapShareDirectory": {
+      "defaultValue": "",
+      "type": "String",
+      "metadata": {
+        "description": "(Optional) To bootstrap from multiple bootstrap directories within the same file share, enter the subdirectory hosting the bootstrap files."
+      }
+    },
+    "optional-AppendStringToResources": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "If the NAME and CONFIGURATION of the created LBs/NSGs/VMs/AVSET/VNET match an existing LBs/NSGs/VMs/AVSET/VNET in the SAME resource group, the template will its skip creation.  If the new resource NAME matches, but the resource CONFIGURATION does not, the template will fail or will overwrite the existing resource."
       }
     }
   },
