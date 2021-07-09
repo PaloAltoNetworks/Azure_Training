@@ -203,7 +203,7 @@
     },
     "PANOSVersion": {
       "type": "string",
-      "defaultValue": "latest",
+      "defaultValue": "10.0.6",
       "allowedValues": [
         "latest",
         "10.0.6"
