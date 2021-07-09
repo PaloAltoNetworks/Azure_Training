@@ -379,11 +379,14 @@
     "global_fw_adminUsername": "paloalto",
     "global_fw_adminPassword": "PanPassword123!",
     "global_fw_diskSizeGB": 60,
+    "global_bootstrap_storageAccount": "[parameters('optional-BootstrapStorageAccount')]",
+    "global_bootstrap_accessKey": "[parameters('optional-BootstrapAccessKey')]",
+    "global_bootstrap_shareDirectory": "[parameters('optional-BootstrapShareDirectory')]",
     "global_fw_publisher": "paloaltonetworks",
     "global_fw_license": "byol",
-    "global_fw_version": "latest",
+    "global_fw_version": "[parameters('PANOSVersion')]",
     "global_fw_product": "vmseries-flex",
-    "global_fw_vmSize": "Standard_DS3_v2",
+    "global_fw_vmSize": "[parameters('VMSize')]",
     "global_fw_enableAcceleratedNetworking": "false",
     "global_fw_avset_option": "Create new availability set",
     "global_fw_avset_name": "vmseries-fw-as",
@@ -493,9 +496,7 @@
     "fw1_interface1_pip_name": "vmseries-vm1-nic1-pip",
     "fw1_interface0_pip_id": { "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('fw1_interface0_pip_name'))]" },
     "fw1_interface1_pip_id": { "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('fw1_interface1_pip_name'))]" },
-    "fw1_bootstrap_fileShare": "transit-1fw-3nic-avset-intlb-extlb-2spokes",
-    "fw1_bootstrap": "[concat('storage-account=', variables('global_bootstrap_storageAccount'), ',access-key=', variables('global_bootstrap_accessKey'), ',file-share=', variables('fw1_bootstrap_fileShare'), ',share-directory=', variables('global_bootstrap_shareDirectory'))]",
-
+    "fw1_bootstrap": "[concat('storage-account=', variables('global_bootstrap_storageAccount'), ',access-key=', variables('global_bootstrap_accessKey'), ',share-directory=', variables('global_bootstrap_shareDirectory'))]",
     "COMMENT_fw2": "FW2 TEMPLATE VARIABLES",
     "fw2_computerName": "vmseries-vm2",
     "fw2_interface0_name": "vmseries-vm2-nic0",
@@ -508,8 +509,7 @@
     "fw2_interface1_pip_name": "vmseries-vm2-nic1-pip",
     "fw2_interface0_pip_id": { "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('fw2_interface0_pip_name'))]" },
     "fw2_interface1_pip_id": { "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('fw2_interface1_pip_name'))]" },
-    "fw2_bootstrap_fileShare": "transit-2fw-3nic-avset-intlb-extlb-2spokes",
-    "fw2_bootstrap": "[concat('storage-account=', variables('global_bootstrap_storageAccount'), ',access-key=', variables('global_bootstrap_accessKey'), ',file-share=', variables('fw2_bootstrap_fileShare'), ',share-directory=', variables('global_bootstrap_shareDirectory'))]"
+    "fw2_bootstrap": "[concat('storage-account=', variables('global_bootstrap_storageAccount'), ',access-key=', variables('global_bootstrap_accessKey'),',share-directory=', variables('global_bootstrap_shareDirectory'))]"
 
   },
   "resources": [
