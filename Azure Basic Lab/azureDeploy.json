@@ -203,11 +203,11 @@
     },
     "PANOSVersion": {
       "type": "string",
-      "defaultValue": "latest",
+      "defaultValue": "10.0.6",
       "allowedValues": [
         "latest",
         "9.1.0",
-        "10.0.1"
+        "10.0.6"
       ],
       "metadata": {
         "description": "Select the PAN-OS version to deploy.  Selecting 'Latest' deploys the latest available image on the Azure Marketplace."
@@ -379,9 +379,6 @@
     "global_fw_adminUsername": "paloalto",
     "global_fw_adminPassword": "PanPassword123!",
     "global_fw_diskSizeGB": 60,
-    "global_bootstrap_storageAccount": "mrmdemo01",
-    "global_bootstrap_accessKey": "ufOuiDH0cpTV0swolczL10RVBYVikDPvPwb7LtJHB0soPmFzuNgrSM427ckwUQmuGvM0lIjur6QhAKqysa3P/Q==",
-    "global_bootstrap_shareDirectory": "",
     "global_fw_publisher": "paloaltonetworks",
     "global_fw_license": "byol",
     "global_fw_version": "latest",
