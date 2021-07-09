@@ -77,9 +77,6 @@
     "fW2-IPDataplane2": {
       "value": "10.0.2.5"
     },
-    "licenseType": {
-      "value": "byol"
-    },
     "panosVersion": {
       "value": "latest"
     },
@@ -96,7 +93,7 @@
       "value": "vmseries-fw-as"
     },
     "acceleratedNetworking": {
-      "value": "disable"
+      "value": "enable"
     },
     "applyPublicIPToManagement": {
       "value": "Yes"
