@@ -236,8 +236,12 @@ Congratulations,  you have successfully completed the following steps:
 
 ## What You'll Do
 
-- Configure Panorama
-- **TROUBLESHOOTING!!!!**
-- Create/Update Panorama Security Policies, NAT Policies, etc...
+- Configure Panorama Security Policies, NAT Policies, etc...
 - Configure Webserver
+- **TROUBLESHOOTING!!!!**
+- **TROUBLESHOOTING!!!!**
+- **TROUBLESHOOTING!!!!**
+- Validate Traffic flow
+
+### Configure Panorama
 
