@@ -157,6 +157,9 @@ To complete this lab, you'll need:
 # Deploy Spoke Ressource
 
 In this Lab part you will create a dedicated spoke ressource group with an Webserver in it to test inbound/outbound traffic flows
+<p align="center">
+<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/webapp.png">
+</p>
 
 ## What You'll Do
 
@@ -166,12 +169,6 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
 - Update Index.Html
 - Test inbound/outbound traffic
 
-In this part, We will Deploy a single Linux Server in a dedicated Resource Group
-<p align="center">
-<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/webapp.png">
-</p>
-
+1. 
 [<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FPaloAltoNetworks%2FAzure_Training%2Fmain%2FAzure%20Advanced%20Lab%2Fspokedeployment.json)
-</br>
-</br>
 </br>
