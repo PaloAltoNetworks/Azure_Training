@@ -24,19 +24,16 @@ For this workshop we have automated the deployment of the lab environment and y
 
 ## What You'll Do
 
+- Login into your Azure Account
+- Download GitHub Reposetority into you Azure Environment
+- Modifying Terraform code
 - Deploy the Azure resources required for the lab using Terraform
-- wwwww
-- www
-- www
-- www
-- www
-- www
+- Configure Panorama
+- Deploy Spoke Ressource and configure Traffic routing
+- **TROUBLESHOOTING!!!!**
+- Create/Update Panorama Security Policies, NAT Policies, etc...
 
 <br/><br/>
-
-# Activity 0: Validate Azure Access
-
-At first go to https://portal.azure.com and login with your credentials. Palo alto Networks Employees with the Corporate Credentials and Externals with the Credntials that they used during the Pre-Req Lab.
 
 # Activity 1: Lab Setup
 
@@ -44,7 +41,24 @@ At first go to https://portal.azure.com and login with your credentials. Palo al
 
 To complete this lab, you'll need:
 
+- Login to Azure Portal (https://portal.azure.com) and login with your Credentials
+- Download Terraform Code from GitHub
+- Modify Terraform Code
+- Execute Terraform Code
+- Validate Deployment in Azure Portal and Panorama
 
+1. Login in to Azure Portal (https://portal.azure.com) 
+<details>
+  <summary style="color:black">Expand For Details</summary>
+
+  Azure Portal Landing Page
+  ![](https://raw.githubusercontent.com/torstenstern/ps-lab-aws-cloud-ngfw/main/Images/AzurePortal.png)
+
+</details>
+<br/>
+
+2. Open Azure Cloud Shell
+![](https://raw.githubusercontent.com/torstenstern/ps-lab-aws-cloud-ngfw/main/Images/AzureCLI.png)
 
 <br/>
 
