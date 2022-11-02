@@ -164,11 +164,13 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
 ## What You'll Do
 
 - Deploy the Spoke Ressource Group with ARM Template
+- Configure VNET peering between spoke and hub VNET
 - Create a Route Table / UDR to overwrite the default behaviour and redirect the traffic to the ILB Frontend IP
 - Update Webserver and Install Apache2 Webserver
 - Update Index.Html
 - Test inbound/outbound traffic
 
+### Deploy the Spoke Ressource Group
 1. To deploy the Spoke Ressource make a right click (open in new tab) on the following button [<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FPaloAltoNetworks%2FAzure_Training%2Fmain%2FAzure_Autoscaling_Lab%2Fspokedeployment.json)
 2. In the new tab you see the following
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/arm.png)
@@ -197,3 +199,25 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/armcomplete.png)
 7. In the spoke resource group you should see the following resources deployed into it                                                      
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/spokerg.png)
+
+### Configure VNET peering
+
+1. On the Azure Portal select your Student Ressource Group
+2. In the Resource Group select the Virtual Network. In the example is the Ressource Group called **TorstenStern-RG** and the VNET TorstenStern-vnet
+   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/studentrg.png)
+3. In the VNET ressource click on top right **JSON view**
+   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/vnetjson1.png)
+4. In the JSON view click on **copy to clipboard** and save it
+   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/vnetjson2.png)
+5. As next go to your spoke ressource group and select the VNET inside the Resource Group
+6. In the spoke VNET select on the left panel **Peerings** and then **Add**
+   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/spokevnet.png)
+7. Create now the peering
+   1. Peering link name - Use the same
+   2. Select I know my ressource ID
+   3. Enter in Ressource ID the previous copy ID from the JSON view
+   4. Leave all other values as it is
+   5. Click Add
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/peering.png)
+8. After the peering is completed you should see the following
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/peeringcomplete.png)
