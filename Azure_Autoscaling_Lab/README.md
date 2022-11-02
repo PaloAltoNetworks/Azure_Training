@@ -77,10 +77,60 @@ To complete this lab, you'll need:
 7. Rename the ```example.tfvars``` to ```terraform.tfvars``` mv ./example.tfvars terraform.tfvars
    <details>
     <summary style="color:black">Expand For Details</summary>
-      Command:
+
+      **Command:**
       ``` mv ./example.tfvars terraform.tfvars```
   </details>
+8. Modify the ```terraform.tfvars``` inside Cloud shell with the ```vi``` command
+   1. Modify the following variables in the File
+   
+   ```
+   resource_group_name = <StudentName>-RG
+   virtual_network_name = <StudentName>-vnet
+   storage_account_name = "<studentname>azurelab" #Important only lowercase allowed
+   allow_inbound_mgmt_ips
+   ```
 
+   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/example.png)
+
+9. As next switch to the folder ```inbound_files``` and rename the ```init-cfg.sample.txt``` to ```init-cfg.txt``` using the ```mv``` command
+10. Modify the ```init-cfg.txt``` inside Cloud shell with the ```vi``` command. 
+    
+  ```
+    type=dhcp-client
+    auth-key=INSTUCTOR WILL PROVIDE KEY
+    panorama-server=NSTUCTOR WILL PROVIDE IP
+    dgname=Student1   #Replace the Number with Studentnumber provided by the Instructor
+    tplname=Workshop-Student1-ST   #Replace the Number with Studentnumber provided by the Instructor
+    plugin-op-commands=panorama-licensing-mode-on
+    dhcp-send-hostname=yes
+    dhcp-send-client-id=yes
+    dhcp-accept-server-hostname=yes
+    dhcp-accept-server-domain=yes
+  ```
+11. Save your changes
+12. Move back to the ```vmseries_scaleset``` with the command ```cd..```
+13. Once you made all your changes execute the Terraform code with following commands:
+    1.  ```terraform init```.
+    2.  ```terraform plan```.
+    3.  ```terraform apply``` once you get the prompet type ```yes```
+   
+<details>
+  <summary style="color:black">Expand For Details</summary>
+
+  **Terraform Init**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/init.png)
+
+  **Terraform Plan**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/plan.png)
+
+  **Terraform Apply**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/apply.png)
+
+</details>
+
+14. Once the ```terraform apply``` is completed you will see the following output
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/Complete.png)
 <br/>
 
 # Deploy Spoke Ressource
