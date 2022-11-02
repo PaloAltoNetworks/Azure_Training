@@ -61,6 +61,25 @@ To complete this lab, you'll need:
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/AzureCLI.png)
 3. click on Create storage
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/storagecli.png)
+4. Once the creation of the storage is completed you will see the following
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/cloudshell.png)
+5. Download Terraform Code from GitHub
+   1. in the Cloud shell execute the following command
+    ```
+    git clone https://github.com/PaloAltoNetworks/Azure_Training.git
+    ```
+    2. As output you will see the following
+    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/clonerepo.png)
+6. Now brose to the Azure Autoscaling folder
+   ```
+   cd ./Azure_Training/Azure_Autoscaling_Lab/vmseries_scaleset
+   ```
+7. Rename the ```example.tfvars``` to ```terraform.tfvars``` mv ./example.tfvars terraform.tfvars
+   <details>
+    <summary style="color:black">Expand For Details</summary>
+      Command:
+      ``` mv ./example.tfvars terraform.tfvars```
+  </details>
 
 <br/>
 
