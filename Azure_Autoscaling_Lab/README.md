@@ -166,9 +166,6 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
 - Deploy the Spoke Ressource Group with ARM Template
 - Configure VNET peering between spoke and hub VNET
 - Create a Route Table / UDR to overwrite the default behaviour and redirect the traffic to the ILB Frontend IP
-- Update Webserver and Install Apache2 Webserver
-- Update Index.Html
-- Test inbound/outbound traffic
 
 ### Deploy the Spoke Ressource Group
 1. To deploy the Spoke Ressource make a right click (open in new tab) on the following button [<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FPaloAltoNetworks%2FAzure_Training%2Fmain%2FAzure_Autoscaling_Lab%2Fspokedeployment.json)
@@ -221,3 +218,26 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/peering.png)
 8. After the peering is completed you should see the following
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/peeringcomplete.png)
+
+### Deploy Route Table
+
+1. Create a Route Table in your Spoke Ressource Group. Make sure you deploy it into the same Region
+2. Associate the route table with Webserver Subnet
+3. Create a UDR 0.0.0.0/0 that points to the ILB Frontend IP where your Firewalls behind
+
+# Congratulations!!!
+
+Congratulations,  you have successfully completed the following steps:
+- Automated Deployment of your Hub Ressource Group with Terraform
+- Deployment of your Spoke Ressource Group with ARM Template
+- Redirect Traffic of your Spoke Ressource Group to the Internal Load Balancer in the Hub Ressource Group
+
+# Lab Activity 2: Configure Firewalls and Azure 
+
+## What You'll Do
+
+- Configure Panorama
+- **TROUBLESHOOTING!!!!**
+- Create/Update Panorama Security Policies, NAT Policies, etc...
+- Configure Webserver
+
