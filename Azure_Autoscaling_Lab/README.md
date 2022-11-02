@@ -135,26 +135,28 @@ To complete this lab, you'll need:
 14.  Once the ```terraform apply``` is completed you will see the following output
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/Complete.png)
 
-# Validate Deployment
+## Validate Deployment
 
-## What You'll Do
+### What You'll Do
 
 - Login into Panorama
 - Validate Deployment
-- Configure Security Policies
-- Configure NAT Policies
 
-1. Login into Panorama Public IP
+15. Login into Panorama Public IP
    1. Instructor will Panorama IP 
    2. Instructor will Username
    3. Instructor will Password
 
-2. Once you logged into the Panorama Navigate to the **Panorama** tab validate you can see your newly deployed Firewalls (The deployment and bootstrapping process can take up to 30-45 minutes). If the Deployment was succesful you will see the following output in the Panorama -> Managed Devices -> Summary
+16. Once you logged into the Panorama Navigate to the **Panorama** tab validate you can see your newly deployed Firewalls **(The deployment and bootstrapping process can take up to 30-45 minutes)**. If the Deployment was succesful you will see the following output in **Panorama -> Managed Devices -> Summary**
+   
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panoramacomplete.png)
 
+17. You succesfull deployed your Environment if you can the above output
 
 
 # Deploy Spoke Ressource
+
+In this Lab part you will create a dedicated spoke ressource group with an Webserver in it to test inbound/outbound traffic flows
 
 ## What You'll Do
 
