@@ -245,3 +245,28 @@ Congratulations,  you have successfully completed the following steps:
 
 ### Configure Panorama
 
+1. Login into the Panorama with your Student Account
+2. In the Panorama go to the Policies tab and make sure your Student Device Group is select. Under Security Policies you should see the following rules:
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/policies.png)
+3. In the Secuirty -> Pre Rules create the following rules
+   1. Allow Inbound HTTP Traffic from your Public IP
+   2. Allow Inbound SSH Traffic from your Public IP
+   3. Deny all other traffic
+4. Under the NAT section, create the following NAT Rules
+   1. Inbound NAT, HTTP to the Webserver IP
+   2. Inbound NAT, SSH to the Webserver IP
+   3. Outbound NAT, all traffice from Trust to Untrust.
+
+
+
+<details>
+  <summary style="color:black">Expand For Details</summary>
+
+  **Security Policies**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/security.png)
+
+  **NAT Policies**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/nat.png)
+
+</details>
+<br/>
