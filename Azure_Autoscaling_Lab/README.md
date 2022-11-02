@@ -189,5 +189,11 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
     Subnet Prefix - Don't change
 
   ```
-4. After changing the paramater click on Review + create
+4. After changing the paramater click on **Review + create**
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/armreview.png)
+5. If the Validation passed click on **Create**                                                        
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/armcreate.png)
+6. After the deployment is completed click on **Go to resource group**                                                      
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/armcomplete.png)
+7. In the spoke resource group you should see the following resources deployed into it                                                      
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/spokerg.png)
