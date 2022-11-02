@@ -52,13 +52,15 @@ To complete this lab, you'll need:
   <summary style="color:black">Expand For Details</summary>
 
   Azure Portal Landing Page
-  ![](https://raw.githubusercontent.com/torstenstern/ps-lab-aws-cloud-ngfw/main/Images/AzurePortal.png)
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/AzurePortal.png)
 
 </details>
 <br/>
 
 2. Open Azure Cloud Shell
-![](https://raw.githubusercontent.com/torstenstern/ps-lab-aws-cloud-ngfw/main/Images/AzureCLI.png)
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/AzureCLI.png)
+3. click on Create storage
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/storagecli.png)
 
 <br/>
 
