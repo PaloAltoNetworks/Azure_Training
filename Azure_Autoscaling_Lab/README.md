@@ -256,11 +256,13 @@ Congratulations,  you have successfully completed the following steps:
    1. Inbound NAT, HTTP to the Webserver IP
    2. Inbound NAT, SSH to the Webserver IP
    3. Outbound NAT, all traffice from Trust to Untrust.
+5. Commit your changes to the Panorama
+6. Push your changes to your Firewalls
 
 
 
 <details>
-  <summary style="color:black">Expand For Details</summary>
+  <summary style="color:black">Expand If you need Help</summary>
 
   **Security Policies**
   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/security.png)
