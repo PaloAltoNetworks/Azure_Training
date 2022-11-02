@@ -143,9 +143,9 @@ To complete this lab, you'll need:
 - Validate Deployment
 
 15. Login into Panorama Public IP
-   1. Instructor will Panorama IP 
-   2. Instructor will Username
-   3. Instructor will Password
+    1.  Instructor will Panorama IP 
+    2.  Instructor will Username
+    3.  Instructor will Password
 
 16. Once you logged into the Panorama Navigate to the **Panorama** tab validate you can see your newly deployed Firewalls **(The deployment and bootstrapping process can take up to 30-45 minutes)**. If the Deployment was succesful you will see the following output in **Panorama -> Managed Devices -> Summary**
    
