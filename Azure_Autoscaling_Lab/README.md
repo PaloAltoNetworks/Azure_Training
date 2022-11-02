@@ -169,6 +169,25 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
 - Update Index.Html
 - Test inbound/outbound traffic
 
-1. To deploy the Spoke Ressource make a right click on the following button [<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FPaloAltoNetworks%2FAzure_Training%2Fmain%2FAzure_Autoscaling_Lab%2Fspokedeployment.json)
-</br>
-https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/spokedeployment.json
+1. To deploy the Spoke Ressource make a right click (open in new tab) on the following button [<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FPaloAltoNetworks%2FAzure_Training%2Fmain%2FAzure_Autoscaling_Lab%2Fspokedeployment.json)
+2. In the new tab you see the following
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/arm.png)
+3. Change the following paramaters in the:
+    
+  ```
+    Subscription - Leave default
+    Resource group - Click on Create new with the following value <StudenName>-Workshop
+    Region - change it to the region where your other ressources are deployed
+    Admin Username - Chose an Admin name.
+    Admin Password - chose a password
+    VNET Option - Don't change
+    VNET Ressource Group - Don't change
+    Vm Name - change it to <StudentName>-Webserver
+    Virtual Network Name - change it to <StudentName>-vnet
+    Adress Prefix - Don't change
+    Subnet Name - change it to <StudentName>-vnet-subnet
+    Subnet Prefix - Don't change
+
+  ```
+4. After changing the paramater click on Review + create
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/armreview.png)
