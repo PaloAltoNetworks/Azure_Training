@@ -272,3 +272,11 @@ Congratulations,  you have successfully completed the following steps:
 
 </details>
 <br/>
+
+### Configure Webserver
+
+1. Go to your Spoke ressource group
+2. Enable Boot diagnostics on the Webserver
+   1. Create new Storage account or use an existing
+3. Go to the Serial console of your Webserver
+   1. Use your Credentials you setup
