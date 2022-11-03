@@ -338,6 +338,17 @@ to obtain your password for the firewall you have to do the following steps
    1. ```terraform output password ```
    2. ```terraform output username ```
    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/username_password.png)
-4. After that you can login into your Firewalls over the Public IP attached to the instances (NOT over the Frontend IP of Public Load Balancer)
+4. After that you can login into your Firewalls over the Public IP attached to the instances (NOT over the Frontend IP of Public Load Balancer) If you don't know how to find the PIP of your firewall go please to the [Firewall IP Information](#firewall-ip-information) section
 
-  
+## Firewall IP Information
+In this section will show you how to find your IP Information in a Virtual Machine Scale Set (VMSS)
+1. Go to your ressource group where your VMSS is deployed
+2. In the ressource group select your VMSS object
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/vmss.png)
+3. 123213
+4. 123123
+5. 13123
+6. 123123
+7. 123123
+8. 123123
+9.  123123
