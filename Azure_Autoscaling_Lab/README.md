@@ -279,4 +279,41 @@ Congratulations,  you have successfully completed the following steps:
 2. Enable Boot diagnostics on the Webserver
    1. Create new Storage account or use an existing
 3. Go to the Serial console of your Webserver
-   1. Use your Credentials you setup
+   1. Use your Credentials you setup in the previous step
+4. Please run the following commands to update the Webserver and to isntall Apache 2 Webserver
+   1. ```sudo apt-get update```
+   2. ```sudo apt-get install apache2 -y```
+5. Are the commands working?
+6. Can you see the trafic is flowing through the firewall? **NO? WHY?**
+
+### Troubleshooting
+
+It looks like the no traffic is working! The question is now why it isn't working and which Troubleshooting steps you do, to find the root cause.
+
+Here some thinkgs you should have a look now.
+
+1. Can you see the Traffic in the Firewall?
+2. Can you ping the Firewall from the Webserver and reverse?
+3. Are the Healthprobes are working? Load Balancer Metrics
+4. Is your routing on the spoke correctly setup?
+5. Is your routing on the Virtual Router on the firewalls correct?
+6. Is the the NSG's blocking your traffic?
+
+<details>
+  <summary style="color:black">Secret ;)</summary>
+
+  **NSG sg_pub_inbound**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_pub_inbound.png)
+
+  **NSG sg_private**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_private.png)
+
+  **Would that help on NSG sg_private**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_private_solution.png)
+
+  **Would that help on NSGsg_pub_inbound**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_pub_inbound_solution.png)
+
+</details>
+<br/>
+
