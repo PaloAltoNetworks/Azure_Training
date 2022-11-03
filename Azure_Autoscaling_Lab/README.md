@@ -299,7 +299,7 @@ Here some thinkgs you should have a look now.
 5. Is your routing on the Virtual Router on the firewalls correct?
 6. Is the the NSG's blocking your traffic?
 7. Did you logged into your Firewalls/Panorama to validate traffic
-   1. If you want to know how to find the password go to the section [Firewall Password](#firewall-password)
+   1. If you want to know how to find the password go to the section [Firewall Password](#firewall-passwordusername)
 8. If you fixed all the issues in the Environment go to the [Traffic Validation](#traffic-validation) section
 
 <details>
