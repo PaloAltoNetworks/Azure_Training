@@ -343,12 +343,12 @@ to obtain your password for the firewall you have to do the following steps
 ## Firewall IP Information
 In this section will show you how to find your IP Information in a Virtual Machine Scale Set (VMSS)
 1. Go to your ressource group where your VMSS is deployed
-2. In the ressource group select your VMSS object
+2. In the ressource group select your VMSS object (example: inbound-VMSS)
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/vmss.png)
-3. 123213
-4. 123123
-5. 13123
-6. 123123
-7. 123123
-8. 123123
-9.  123123
+3. inside the VMSS click on Instances
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/vmss1.png)
+4. Now you see all Instances inside the VMSS. As next you click on one the instances
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/vmss2.png)
+5. In the Overview section of your instance you can see now the Private and Public IP of your Firewall
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/vmss3.png)
+6. Repeat the steps for all other Firewalls to obtain the IP Information of your Firewalls.
