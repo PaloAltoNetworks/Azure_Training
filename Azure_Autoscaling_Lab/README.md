@@ -298,9 +298,12 @@ Here some thinkgs you should have a look now.
 4. Is your routing on the spoke correctly setup?
 5. Is your routing on the Virtual Router on the firewalls correct?
 6. Is the the NSG's blocking your traffic?
+7. Did you logged into your Firewalls/Panorama to validate traffic
+   1. If you want to know how to find the password go to the section [Firewall Password](#firewall-password)
+8. If you fixed all the issues in the Environment go to the [Traffic Validation](#traffic-validation) section
 
 <details>
-  <summary style="color:black">Secret ;)</summary>
+  <summary style="color:black">Secret :joy:</summary>
 
   **NSG sg_pub_inbound**
   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_pub_inbound.png)
@@ -311,9 +314,30 @@ Here some thinkgs you should have a look now.
   **Would that help on NSG sg_private**
   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_private_solution.png)
 
-  **Would that help on NSGsg_pub_inbound**
+  **Would that help on NSG sg_pub_inbound**
   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_pub_inbound_solution.png)
 
 </details>
 <br/>
 
+If you have fixed the traffic issue go back to [Configure Webserver](#configure-webserver) section.
+
+### Traffic Validation
+
+# Useful information
+## Firewall Password/Username
+to obtain your password for the firewall you have to do the following steps
+
+1. Open Azure Cloud Shell
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/AzureCLI.png)
+2. In Cloud shell browse to the following directory
+   ```
+   cd ./Azure_Training/Azure_Autoscaling_Lab/vmseries_scaleset
+   ```
+3. As next type following commands to get the username/password from your firewalls
+   1. ```terraform output password ```
+   2. ```terraform output username ```
+   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/username_password.png)
+4. After that you can login into your Firewalls over the Public IP attached to the instances (NOT over the Frontend IP of Public Load Balancer)
+
+  
