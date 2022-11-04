@@ -242,6 +242,7 @@ Congratulations,  you have successfully completed the following steps:
 - **TROUBLESHOOTING!!!!**
 - **TROUBLESHOOTING!!!!**
 - Validate Traffic flow
+- Autoscaling Test
 
 ### Configure Panorama
 
@@ -302,25 +303,8 @@ Here some thinkgs you should have a look now.
    1. If you want to know how to find the password go to the section [Firewall Password](#firewall-passwordusername)
 8. If you fixed all the issues in the Environment go to the [Traffic Validation](#traffic-validation) section
 
-<details>
-  <summary style="color:black">Secret :joy:</summary>
-
-  **NSG sg_pub_inbound**
-  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_pub_inbound.png)
-
-  **NSG sg_private**
-  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_private.png)
-
-  **Would that help on NSG sg_private**
-  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_private_solution.png)
-
-  **Would that help on NSG sg_pub_inbound**
-  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_pub_inbound_solution.png)
-
-</details>
-<br/>
-
 If you have fixed the traffic issue go back to [Configure Webserver](#configure-webserver) section.
+If not review again your Config or go the [Cheating Section](#cheating-section)
 
 ### Traffic Validation
 
@@ -331,6 +315,24 @@ If you got the all traffic working you can now start with testing of the environ
    1. ssh <username>@Public Load Balancer FIP
 
 <br/>
+
+### Autoscaling Test
+In this section we will test if the Scale out/in is working and how you can test it
+
+1. Install a second spoke application. Use [Deploy Spoke ressource](#deploy-spoke-ressource) section
+2. Create on the second spoke a route table and UDR pointing to the ILB FIP
+3. Establish VNet peering between spoke2 and Hub VNet [VNet Peering](#configure-vnet-peering)
+4. Login in your Panorama and Create a Security Poliy for East/West traffic. Activate all Security Profiles
+5. Update your Virtual routers -> static routes to enable traffic flowing
+6. Install on both spoke Server Iperf3
+   1. ```sudo apt-get install iperf3```
+7. Run iperf3 server on both servers in the background
+   1. ```sudo iperf3 -s -D -p 5000```
+8. Execute the following command on both servers
+   1. ```sudo iperf3 -R -c 10.213.1.4 -i 1 -t 3000 -T s1 -P 100 -p 5000```
+9. Check on the Azure Portal and on your Firewalls if you could Scale Out.
+
+
 <br/>
 
 # Congratulations!!!
@@ -340,6 +342,7 @@ Congratulations,  you have successfully completed the following steps:
 - configure Azure Environment to allow traffic flow
 - Troubleshooting
 - Traffic Flow Validation
+- Autoscaling Validation/Test
 
 
 <br/>
@@ -376,3 +379,24 @@ In this section will show you how to find your IP Information in a Virtual Machi
 5. In the Overview section of your instance you can see now the Private and Public IP of your Firewall
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/vmss3.png)
 6. Repeat the steps for all other Firewalls to obtain the IP Information of your Firewalls.
+
+
+# Cheating Section 
+
+<details>
+  <summary style="color:black">Secret :joy:</summary>
+
+  **NSG sg_pub_inbound**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_pub_inbound.png)
+
+  **NSG sg_private**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_private.png)
+
+  **Would that help on NSG sg_private**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_private_solution.png)
+
+  **Would that help on NSG sg_pub_inbound**
+  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_pub_inbound_solution.png)
+
+</details>
+<br/>
