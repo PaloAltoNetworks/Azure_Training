@@ -324,6 +324,30 @@ If you have fixed the traffic issue go back to [Configure Webserver](#configure-
 
 ### Traffic Validation
 
+If you got the all traffic working you can now start with testing of the environment.
+
+1. Test inbound HTTP to your Webserver http://<Public Load Balancer FIP>
+2. Test inbound SSH to your Webserver. You can use Putty (Windows) Terminal (Mac)
+   1. ssh <username>@Public Load Balancer FIP
+
+<br/>
+<br/>
+
+# Congratulations!!!
+
+Congratulations,  you have successfully completed the following steps:
+- Configure Panorama
+- configure Azure Environment to allow traffic flow
+- Troubleshooting
+- Traffic Flow Validation
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
 # Useful information
 ## Firewall Password/Username
 to obtain your password for the firewall you have to do the following steps
