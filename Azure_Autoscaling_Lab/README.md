@@ -287,7 +287,7 @@ Congratulations,  you have successfully completed the following steps:
 5. Are the commands working?
 6. Can you see the trafic is flowing through the firewall? **NO? WHY?**
 
-### Troubleshooting
+### Troubleshooting 1
 
 It looks like the no traffic is working! The question is now why it isn't working and which Troubleshooting steps you do, to find the root cause.
 
@@ -334,7 +334,7 @@ In this section we will test if the Scale out/in is working and how you can test
     ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/appinsights.png)
 10. In Application Insights select **Metrics** on the left side. Keep **Scope** and **Metric Namespace** as it is and change the Metric field to **panSessionThroughputKbps**
     ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/appinsights2.png)
-11. Your output should similiar like this. If NOT WHY?
+11. Your output should similiar like this. **If NOT WHY? Troubleshooting**
     ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/appinsights3.png)
 12. After 2-3 minutes you can check VMSS your ressource if it scales out.
     1.  Scale Out
@@ -344,6 +344,7 @@ In this section we will test if the Scale out/in is working and how you can test
 13. When the Scale out completed you can go to your Panorama and check if a new Firewalls is added to your Device Group
     ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panscale.png)
 
+In case you don't find the reason why you didn't see any metrics or logs check the [Cheating Section](#cheating-section)
 <br/>
 
 # Congratulations!!!
@@ -394,8 +395,12 @@ In this section will show you how to find your IP Information in a Virtual Machi
 
 # Cheating Section 
 
+Use it only in case you don't find a solution
+
+## Troubleshooting
+
 <details>
-  <summary style="color:black">Secret :joy:</summary>
+  <summary style="color:black">Secret for [Troubleshooting 1](#troubleshooting-1) :joy:</summary>
 
   **NSG sg_pub_inbound**
   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/sg_pub_inbound.png)
@@ -411,3 +416,12 @@ In this section will show you how to find your IP Information in a Virtual Machi
 
 </details>
 <br/>
+
+<details>
+  <summary style="color:black">Secret for [Autoscaling issue](#autoscaling-test) :joy:</summary>
+
+  **Did you enabled Azure Application Insights on the VM-Series Firewall?**
+  Follow the Link below add your App Insight Instrumatation key. Please configure it over the Panorama.
+  https://docs.paloaltonetworks.com/vm-series/10-2/vm-series-deployment/set-up-the-vm-series-firewall-on-azure/enable-azure-application-insights-on-the-vm-series-firewall
+
+</details>
