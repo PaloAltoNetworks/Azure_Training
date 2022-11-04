@@ -88,15 +88,15 @@ inbound_count_maximum  = 5
 
 autoscale_metrics = {
   "DataPlaneCPUUtilizationPct" = {
-    scaleout_threshold = 80
-    scalein_threshold  = 20
+    scaleout_threshold = 15 # 80% is an optimal value
+    scalein_threshold  = 5 # 20% is an optimal value
   }
   "panSessionUtilization" = {
-    scaleout_threshold = 80
-    scalein_threshold  = 20
+    scaleout_threshold = 15 # 80% is an optimal value
+    scalein_threshold  = 5 # 20% is an optimal value
   }
   "panSessionThroughputKbps" = {
-    scaleout_threshold = 1800000 # >80 percent of 2.2G
+    scaleout_threshold = 1800000 # 1800000  >80 percent of 2.2G
     scalein_threshold  = 40000
   }
 }
@@ -104,8 +104,8 @@ autoscale_metrics = {
 # Autoscaling grows:
 scaleout_statistic        = "Average"
 scaleout_time_aggregation = "Average"
-scaleout_window_minutes   = 10
-scaleout_cooldown_minutes = 30
+scaleout_window_minutes   = 2 # 10 is an optimal value
+scaleout_cooldown_minutes = 6 # 30 is an optimal value
 
 # Autoscaling shrinks:
 scalein_statistic        = "Max"
@@ -113,10 +113,9 @@ scalein_time_aggregation = "Average"
 scalein_window_minutes   = 60
 scalein_cooldown_minutes = 10080
 
-storage_account_name        = "<studentname>azurelab" # replace <studentname> with your name
+storage_account_name        = "vmssexample20210406"
 inbound_storage_share_name  = "ibbootstrapshare"
 
 inbound_files = {
   "inbound_files/init-cfg.txt" = "config/init-cfg.txt"
 }
-
