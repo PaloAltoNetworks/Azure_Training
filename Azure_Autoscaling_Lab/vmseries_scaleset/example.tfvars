@@ -96,8 +96,8 @@ autoscale_metrics = {
     scalein_threshold  = 5 # 20% is an optimal value
   }
   "panSessionThroughputKbps" = {
-    scaleout_threshold = 1800000 # 1800000  >80 percent of 2.2G
-    scalein_threshold  = 40000
+    scaleout_threshold = 1800 # 1800000  >80 percent of 2.2G
+    scalein_threshold  = 400
   }
 }
 
