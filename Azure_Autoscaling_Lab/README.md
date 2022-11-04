@@ -197,6 +197,8 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
 7. In the spoke resource group you should see the following resources deployed into it                                                      
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/spokerg.png)
 
+<br/>
+
 ### Configure VNET peering
 
 1. On the Azure Portal select your Student Ressource Group
@@ -215,6 +217,8 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
    3. Enter in Ressource ID the previous copy ID from the JSON view
    4. Leave all other values as it is
    5. Click Add
+<br/>
+
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/peering.png)
 8. After the peering is completed you should see the following
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/peeringcomplete.png)
@@ -232,6 +236,8 @@ Congratulations,  you have successfully completed the following steps:
 - Deployment of your Spoke Ressource Group with ARM Template
 - Redirect Traffic of your Spoke Ressource Group to the Internal Load Balancer in the Hub Ressource Group
 
+<br/>
+
 # Lab Activity 2: Configure Panorama, Firewalls and Azure 
 
 ## What You'll Do
@@ -243,6 +249,8 @@ Congratulations,  you have successfully completed the following steps:
 - **TROUBLESHOOTING!!!!**
 - Autoscaling Test
 - **TROUBLESHOOTING!!!!**
+
+<br/>
 
 ### Configure Panorama
 
@@ -328,20 +336,22 @@ In this section we will test if the Scale out/in is working and how you can test
    1. ```sudo apt-get install iperf3```
 7. Run iperf3 server on both servers in the background
    1. ```sudo iperf3 -s -D -p 5000```
-8. Execute the following command on both servers
-   1. ```sudo iperf3 -R -c 10.213.1.4 -i 1 -t 3000 -T s1 -P 100 -p 5000```
-9. Check on the Azure Portal your Application Insights
+8. Execute the following command on server 1
+   1. ```sudo iperf3 -R -c <server ip 2> -i 1 -t 3000 -T s1 -P 100 -p 5000```
+9. Execute the following command on server 2
+   1. ```sudo iperf3 -R -c <server ip 1> -i 1 -t 3000 -T s1 -P 100 -p 5000```
+10. Check on the Azure Portal your Application Insights
     ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/appinsights.png)
-10. In Application Insights select **Metrics** on the left side. Keep **Scope** and **Metric Namespace** as it is and change the Metric field to **panSessionThroughputKbps**
+11. In Application Insights select **Metrics** on the left side. Keep **Scope** and **Metric Namespace** as it is and change the Metric field to **panSessionThroughputKbps**
     ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/appinsights2.png)
-11. Your output should similiar like this. **If NOT WHY? Troubleshooting**
+12. Your output should similiar like this. **If NOT WHY? Troubleshooting**
     ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/appinsights3.png)
-12. After 2-3 minutes you can check VMSS your ressource if it scales out.
+13. After 2-3 minutes you can check VMSS your ressource if it scales out.
     1.  Scale Out
     ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/scaleout.png)
-    2. Scale Out Complete
+    1. Scale Out Complete
     ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/scaleout1.png)
-13. When the Scale out completed you can go to your Panorama and check if a new Firewalls is added to your Device Group
+14. When the Scale out completed you can go to your Panorama and check if a new Firewalls is added to your Device Group
     ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panscale.png)
 
 In case you don't find the reason why you didn't see any metrics or logs check the [Cheating Section](#cheating-section)
