@@ -232,7 +232,7 @@ Congratulations,  you have successfully completed the following steps:
 - Deployment of your Spoke Ressource Group with ARM Template
 - Redirect Traffic of your Spoke Ressource Group to the Internal Load Balancer in the Hub Ressource Group
 
-# Lab Activity 2: Configure Firewalls and Azure 
+# Lab Activity 2: Configure Panorama, Firewalls and Azure 
 
 ## What You'll Do
 
@@ -330,8 +330,19 @@ In this section we will test if the Scale out/in is working and how you can test
    1. ```sudo iperf3 -s -D -p 5000```
 8. Execute the following command on both servers
    1. ```sudo iperf3 -R -c 10.213.1.4 -i 1 -t 3000 -T s1 -P 100 -p 5000```
-9. Check on the Azure Portal and on your Firewalls if you could Scale Out.
-
+9. Check on the Azure Portal your Application Insights
+    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/appinsights.png)
+10. In Application Insights select **Metrics** on the left side. Keep **Scope** and **Metric Namespace** as it is and change the Metric field to **panSessionThroughputKbps**
+    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/appinsights2.png)
+11. Your output should similiar like this. If NOT WHY?
+    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/appinsights3.png)
+12. After 2-3 minutes you can check VMSS your ressource if it scales out.
+    1.  Scale Out
+    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/scaleout.png)
+    2. Scale Out Complete
+    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/scaleout1.png)
+13. When the Scale out completed you can go to your Panorama and check if a new Firewalls is added to your Device Group
+    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panscale.png)
 
 <br/>
 
