@@ -239,10 +239,10 @@ Congratulations,  you have successfully completed the following steps:
 - Configure Panorama Security Policies, NAT Policies, etc...
 - Configure Webserver
 - **TROUBLESHOOTING!!!!**
-- **TROUBLESHOOTING!!!!**
-- **TROUBLESHOOTING!!!!**
 - Validate Traffic flow
+- **TROUBLESHOOTING!!!!**
 - Autoscaling Test
+- **TROUBLESHOOTING!!!!**
 
 ### Configure Panorama
 
