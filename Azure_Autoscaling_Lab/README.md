@@ -1,12 +1,40 @@
 ![](https://lh4.googleusercontent.com/18oAPNp1uzZ6qY6bJxg2fWYWUEV-pQzNa_dSAqSp2lEjdg4hlEyLlQYc1OAowXxSqrp5Bk9iXRYOu-mECiqSr-gzo56d8QAh97VrfTbwX4uYN2ABB8BKM9XZK2mSzSXDN3qeHzp8xRsNHmALdeNEPiw)
 
-![](https://lh3.googleusercontent.com/_-_DS9VDmI1QhI68JOiMchoWH7Bo1fqYn0qbD9Y24KH1T1zAG272HQy7cetrLxw3buJYbJEcj7TMjxv0CeWt-z1p4a3hl1FrNKPMROVo6L42XLIWFkjw_yPGlVTzhcPz1v2IB2JCUXMrAl4p2n9kbnY)  
+![](https://lh3.googleusercontent.com/_-_DS9VDmI1QhI68JOiMchoWH7Bo1fqYn0qbD9Y24KH1T1zAG272HQy7cetrLxw3buJYbJEcj7TMjxv0CeWt-z1p4a3hl1FrNKPMROVo6L42XLIWFkjw_yPGlVTzhcPz1v2IB2JCUXMrAl4p2n9kbnY) 
 
-# Palo Alto Networks Azure Autoscaling Lab Guide
+- [1. Palo Alto Networks Azure Autoscaling Lab Guide](#1-palo-alto-networks-azure-autoscaling-lab-guide)
+- [2. Overview](#2-overview)
+- [3. Environment Overview](#3-environment-overview)
+  - [3.1. What You'll Do](#31-what-youll-do)
+- [4. Activity 1: Lab Setup](#4-activity-1-lab-setup)
+  - [4.1. What you'll need](#41-what-youll-need)
+  - [4.2. Validate Deployment](#42-validate-deployment)
+    - [4.2.1. What You'll Do](#421-what-youll-do)
+- [5. Deploy Spoke Ressource](#5-deploy-spoke-ressource)
+  - [5.1. What You'll Do](#51-what-youll-do)
+    - [5.1.1. Deploy the Spoke Ressource Group](#511-deploy-the-spoke-ressource-group)
+    - [5.1.2. Configure VNET peering](#512-configure-vnet-peering)
+    - [5.1.3. Deploy Route Table](#513-deploy-route-table)
+- [6. Congratulations!!!](#6-congratulations)
+- [7. Lab Activity 2: Configure Panorama, Firewalls and Azure](#7-lab-activity-2-configure-panorama-firewalls-and-azure)
+  - [7.1. What You'll Do](#71-what-youll-do)
+    - [7.1.1. Configure Panorama](#711-configure-panorama)
+    - [7.1.2. Configure Webserver](#712-configure-webserver)
+    - [7.1.3. Troubleshooting 1](#713-troubleshooting-1)
+    - [7.1.4. Traffic Validation](#714-traffic-validation)
+    - [7.1.5. Autoscaling Test](#715-autoscaling-test)
+- [8. Congratulations!!!](#8-congratulations)
+- [9. Useful information](#9-useful-information)
+  - [9.1. Firewall Password/Username](#91-firewall-passwordusername)
+  - [9.2. Firewall IP Information](#92-firewall-ip-information)
+- [10. Cheating Section](#10-cheating-section)
+  - [10.1. Troubleshooting](#101-troubleshooting)
+
+# 1. Palo Alto Networks Azure Autoscaling Lab Guide
 
 <br/><br/>
 
-# Overview
+# 2. Overview
 
 The goal of this Lab is to take you through the experience of deploying the Palo Alto Networks VM-Series on Microsoft Azure to protect your Cloud Native Applications. This workshop will take you through the three step process of using the service - Automate, Deploy and Secure.
 
@@ -14,7 +42,7 @@ As part of the workshop you will learn to deploy the VM-Series on a Common model
 
 <br/><br/>
 
-# Environment Overview
+# 3. Environment Overview
 
 **ADD PICTURE**
 
@@ -22,7 +50,7 @@ For this workshop we have automated the deployment of the lab environment and y
 
 <br/>
 
-## What You'll Do
+## 3.1. What You'll Do
 
 - Login into your Azure Account
 - Download GitHub Reposetority into you Azure Environment
@@ -35,9 +63,9 @@ For this workshop we have automated the deployment of the lab environment and y
 
 <br/><br/>
 
-# Activity 1: Lab Setup
+# 4. Activity 1: Lab Setup
 
-## What you'll need
+## 4.1. What you'll need
 
 To complete this lab, you'll need:
 
@@ -135,9 +163,9 @@ To complete this lab, you'll need:
 14.  Once the ```terraform apply``` is completed you will see the following output
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/Complete.png)
 
-## Validate Deployment
+## 4.2. Validate Deployment
 
-### What You'll Do
+### 4.2.1. What You'll Do
 
 - Login into Panorama
 - Validate Deployment
@@ -154,20 +182,20 @@ To complete this lab, you'll need:
 17. You succesfull deployed your Environment if you can the above output
 
 
-# Deploy Spoke Ressource
+# 5. Deploy Spoke Ressource
 
 In this Lab part you will create a dedicated spoke ressource group with an Webserver in it to test inbound/outbound traffic flows
 <p align="center">
 <img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/webapp.png">
 </p>
 
-## What You'll Do
+## 5.1. What You'll Do
 
 - Deploy the Spoke Ressource Group with ARM Template
 - Configure VNET peering between spoke and hub VNET
 - Create a Route Table / UDR to overwrite the default behaviour and redirect the traffic to the ILB Frontend IP
 
-### Deploy the Spoke Ressource Group
+### 5.1.1. Deploy the Spoke Ressource Group
 1. To deploy the Spoke Ressource make a right click (open in new tab) on the following button [<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FPaloAltoNetworks%2FAzure_Training%2Fmain%2FAzure_Autoscaling_Lab%2Fspokedeployment.json)
 2. In the new tab you see the following
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/arm.png)
@@ -199,7 +227,7 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
 
 <br/>
 
-### Configure VNET peering
+### 5.1.2. Configure VNET peering
 
 1. On the Azure Portal select your Student Ressource Group
 2. In the Resource Group select the Virtual Network. In the example is the Ressource Group called **TorstenStern-RG** and the VNET TorstenStern-vnet
@@ -223,13 +251,13 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
 8. After the peering is completed you should see the following
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/peeringcomplete.png)
 
-### Deploy Route Table
+### 5.1.3. Deploy Route Table
 
 1. Create a Route Table in your Spoke Ressource Group. Make sure you deploy it into the same Region
 2. Associate the route table with Webserver Subnet
 3. Create a UDR 0.0.0.0/0 that points to the ILB Frontend IP where your Firewalls behind
 
-# Congratulations!!!
+# 6. Congratulations!!!
 
 Congratulations,  you have successfully completed the following steps:
 - Automated Deployment of your Hub Ressource Group with Terraform
@@ -238,9 +266,9 @@ Congratulations,  you have successfully completed the following steps:
 
 <br/>
 
-# Lab Activity 2: Configure Panorama, Firewalls and Azure 
+# 7. Lab Activity 2: Configure Panorama, Firewalls and Azure 
 
-## What You'll Do
+## 7.1. What You'll Do
 
 - Configure Panorama Security Policies, NAT Policies, etc...
 - Configure Webserver
@@ -252,7 +280,7 @@ Congratulations,  you have successfully completed the following steps:
 
 <br/>
 
-### Configure Panorama
+### 7.1.1. Configure Panorama
 
 1. Login into the Panorama with your Student Account
 2. In the Panorama go to the Policies tab and make sure your Student Device Group is select. Under Security Policies you should see the following rules:
@@ -282,7 +310,7 @@ Congratulations,  you have successfully completed the following steps:
 </details>
 <br/>
 
-### Configure Webserver
+### 7.1.2. Configure Webserver
 
 1. Go to your Spoke ressource group
 2. Enable Boot diagnostics on the Webserver
@@ -295,7 +323,7 @@ Congratulations,  you have successfully completed the following steps:
 5. Are the commands working?
 6. Can you see the trafic is flowing through the firewall? **NO? WHY?**
 
-### Troubleshooting 1
+### 7.1.3. Troubleshooting 1
 
 It looks like the no traffic is working! The question is now why it isn't working and which Troubleshooting steps you do, to find the root cause.
 
@@ -314,7 +342,7 @@ Here some thinkgs you should have a look now.
 If you have fixed the traffic issue go back to [Configure Webserver](#configure-webserver) section.
 If not review again your Config or go the [Cheating Section](#cheating-section)
 
-### Traffic Validation
+### 7.1.4. Traffic Validation
 
 If you got the all traffic working you can now start with testing of the environment.
 
@@ -324,7 +352,7 @@ If you got the all traffic working you can now start with testing of the environ
 
 <br/>
 
-### Autoscaling Test
+### 7.1.5. Autoscaling Test
 In this section we will test if the Scale out/in is working and how you can test it
 
 1. Install a second spoke application. Use [Deploy Spoke ressource](#deploy-spoke-ressource) section
@@ -357,7 +385,7 @@ In this section we will test if the Scale out/in is working and how you can test
 In case you don't find the reason why you didn't see any metrics or logs check the [Cheating Section](#cheating-section)
 <br/>
 
-# Congratulations!!!
+# 8. Congratulations!!!
 
 Congratulations,  you have successfully completed the following steps:
 - Configure Panorama
@@ -373,8 +401,8 @@ Congratulations,  you have successfully completed the following steps:
 <br/>
 <br/>
 
-# Useful information
-## Firewall Password/Username
+# 9. Useful information
+## 9.1. Firewall Password/Username
 to obtain your password for the firewall you have to do the following steps
 
 1. Open Azure Cloud Shell
@@ -389,7 +417,7 @@ to obtain your password for the firewall you have to do the following steps
    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/username_password.png)
 4. After that you can login into your Firewalls over the Public IP attached to the instances (NOT over the Frontend IP of Public Load Balancer) If you don't know how to find the PIP of your firewall go please to the [Firewall IP Information](#firewall-ip-information) section
 
-## Firewall IP Information
+## 9.2. Firewall IP Information
 In this section will show you how to find your IP Information in a Virtual Machine Scale Set (VMSS)
 1. Go to your ressource group where your VMSS is deployed
 2. In the ressource group select your VMSS object (example: inbound-VMSS)
@@ -403,11 +431,11 @@ In this section will show you how to find your IP Information in a Virtual Machi
 6. Repeat the steps for all other Firewalls to obtain the IP Information of your Firewalls.
 
 
-# Cheating Section 
+# 10. Cheating Section 
 
 Use it only in case you don't find a solution
 
-## Troubleshooting
+## 10.1. Troubleshooting
 
 <details>
   <summary style="color:black">Secret for [Troubleshooting 1](#troubleshooting-1) :joy:</summary>
