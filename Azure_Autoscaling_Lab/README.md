@@ -43,8 +43,7 @@ As part of the workshop you will learn to deploy the VM-Series on a Common model
 <br/><br/>
 
 # 3. Environment Overview
-
-![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/exampledesign.png)
+![exampledesign](https://user-images.githubusercontent.com/30934288/233332383-93d9aae4-ff5f-4a02-8687-001ad5a6146e.png)
 
 For this workshop we have automated the deployment of the lab environment and you will using an existing Panorama. The credentials to the Panorama will be provided during the Workshop. This is achieved via Terraform, that you will be launching as part of the lab over the Azure CLI.
 
