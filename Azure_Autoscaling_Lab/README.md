@@ -43,7 +43,7 @@ As part of the workshop you will learn to deploy the VM-Series on a Common model
 <br/><br/>
 
 # 3. Environment Overview
-![exampledesign](https://user-images.githubusercontent.com/30934288/233332383-93d9aae4-ff5f-4a02-8687-001ad5a6146e.png)
+![Azure Ref Arch - Copy of Transit Common](https://user-images.githubusercontent.com/30934288/233354360-357df77a-0acc-409f-89e8-cd8b7b692a33.png)
 
 For this workshop we have automated the deployment of the lab environment and you will using an existing Panorama. The credentials to the Panorama will be provided during the Workshop. This is achieved via Terraform, that you will be launching as part of the lab over the Azure CLI.
 
