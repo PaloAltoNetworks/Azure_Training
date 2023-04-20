@@ -4,9 +4,11 @@
 
 - [1. Palo Alto Networks Azure Autoscaling Lab Guide](#1-palo-alto-networks-azure-autoscaling-lab-guide)
 - [2. Overview](#2-overview)
-- [3. Environment Overview](#3-environment-overview)
-  - [3.1. What You'll Do](#31-what-youll-do)
-- [4. Activity 1: Lab Setup](#4-activity-1-lab-setup)
+  - [2.1. Environment Overview](#21-environment-overview)
+  - [2.2. What You'll do in the whole Lab](#22-what-youll-do-in-the-whole-lab)
+- [3. Activity 1: Deploy Panorama](#3-activity-1-deploy-panorama)
+  - [3.1. What you'll need](#31-what-youll-need)
+- [4. Activity 2: Deploy Azure environment](#4-activity-2-deploy-azure-environment)
   - [4.1. What you'll need](#41-what-youll-need)
   - [4.2. Validate Deployment](#42-validate-deployment)
     - [4.2.1. What You'll Do](#421-what-youll-do)
@@ -42,27 +44,43 @@ As part of the workshop you will learn to deploy the VM-Series on a Common model
 
 <br/><br/>
 
-# 3. Environment Overview
+## 2.1. Environment Overview
 ![Azure Ref Arch - Copy of Transit Common](https://user-images.githubusercontent.com/30934288/233354360-357df77a-0acc-409f-89e8-cd8b7b692a33.png)
 
-For this workshop we have automated the deployment of the lab environment and you will using an existing Panorama. The credentials to the Panorama will be provided during the Workshop. This is achieved via Terraform, that you will be launching as part of the lab over the Azure CLI.
+For this workshop we have automated the deployment of the lab environment and you will create a first a Panorama before we deploy the Environment. The Panorama will not directly connected to the Azure Environment what you deploy in a later stage. This is achieved via Terraform, that you will be launching as part of the lab over the Azure CLI.
 
 <br/>
 
-## 3.1. What You'll Do
+## 2.2. What You'll do in the whole Lab
 
-- Login into your Azure Account
+- Creat a Flex License Deployment profile in the CSP Portal
+  - Standard CDSS
+  - 3 x VM-300 with 4 vCPUs
+  - Panorama Serial Number
+- Deploy Panorama in any Public Cloud Provider.
+  - Make sure it has Internet Conectivity
+  - License the Panorama
+  - Basic Configuration of the Panorama
+    - Configure Software License Plugin
+    - Create Template / Template Stack and Device Group
+  - Validate the Deployment
+- Login into Your Azure Portal
 - Download GitHub Reposetority into you Azure Environment
 - Modifying Terraform code
 - Deploy the Azure resources required for the lab using Terraform
-- Configure Panorama
 - Deploy Spoke Ressource and configure Traffic routing
 - **TROUBLESHOOTING!!!!**
 - Create/Update Panorama Security Policies, NAT Policies, etc...
 
 <br/><br/>
 
-# 4. Activity 1: Lab Setup
+# 3. Activity 1: Deploy Panorama
+In this part you will deploy a single Panorama with a Public IP to garuantee internet connectivity and do a basic configuration of the Panorama. In the next step you will install the Software License plugin and configure it.
+
+## 3.1. What you'll need
+
+
+# 4. Activity 2: Deploy Azure environment
 
 ## 4.1. What you'll need
 
