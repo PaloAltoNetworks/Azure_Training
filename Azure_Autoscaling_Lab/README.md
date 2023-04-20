@@ -75,15 +75,7 @@ To complete this lab, you'll need:
 - Validate Deployment in Azure Portal and Panorama
 
 1. Login in to Azure Portal (https://portal.azure.com) 
-<details>
-  <summary style="color:black">Expand For Details</summary>
-
-  Azure Portal Landing Page
-  ![AzurePortal](https://user-images.githubusercontent.com/30934288/233334030-b7fb093a-5cec-4083-9779-3bf817b0c3ef.png)
-
-</details>
-<br/>
-
+![AzurePortal](https://user-images.githubusercontent.com/30934288/233334030-b7fb093a-5cec-4083-9779-3bf817b0c3ef.png)
 2. Open Azure Cloud Shell
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/AzureCLI.png)
 3. click on Create storage
