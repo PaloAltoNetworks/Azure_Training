@@ -79,7 +79,7 @@ To complete this lab, you'll need:
   <summary style="color:black">Expand For Details</summary>
 
   Azure Portal Landing Page
-  ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/AzurePortal.png)
+  ![AzurePortal](https://user-images.githubusercontent.com/30934288/233334030-b7fb093a-5cec-4083-9779-3bf817b0c3ef.png)
 
 </details>
 <br/>
