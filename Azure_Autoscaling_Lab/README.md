@@ -6,9 +6,10 @@
 - [2. Overview](#2-overview)
   - [2.1. Environment Overview](#21-environment-overview)
   - [2.2. What You'll do in the whole Lab](#22-what-youll-do-in-the-whole-lab)
-- [3. Activity 1: Deploy Panorama](#3-activity-1-deploy-panorama)
-  - [3.1. What you'll need](#31-what-youll-need)
-- [4. Activity 2: Deploy Azure environment](#4-activity-2-deploy-azure-environment)
+- [3. Deploy Panorama](#3-deploy-panorama)
+  - [3.1. What you'll do](#31-what-youll-do)
+  - [3.2. Deploy Panorama](#32-deploy-panorama)
+- [4. Deploy Azure environment](#4-deploy-azure-environment)
   - [4.1. What you'll need](#41-what-youll-need)
   - [4.2. Validate Deployment](#42-validate-deployment)
     - [4.2.1. What You'll Do](#421-what-youll-do)
@@ -74,13 +75,17 @@ For this workshop we have automated the deployment of the lab environment and y
 
 <br/><br/>
 
-# 3. Activity 1: Deploy Panorama
+# 3. Deploy Panorama
 In this part you will deploy a single Panorama with a Public IP to garuantee internet connectivity and do a basic configuration of the Panorama. In the next step you will install the Software License plugin and configure it.
 
-## 3.1. What you'll need
+## 3.1. What you'll do
 
+## 3.2. Deploy Panorama
+To deploy the Spoke Ressource make a right click (open in new tab) on the following button [<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FPaloAltoNetworks%2FAzure_Training%2Fmain%2FAzure_Autoscaling_Lab%2Fpanoimage.json)
 
-# 4. Activity 2: Deploy Azure environment
+<br/><br/>
+
+# 4. Deploy Azure environment
 
 ## 4.1. What you'll need
 
