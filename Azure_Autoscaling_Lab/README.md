@@ -97,13 +97,29 @@ In this part you will deploy a single Panorama with a Public IP to garuantee int
 ![AzurePortal](https://user-images.githubusercontent.com/30934288/233334030-b7fb093a-5cec-4083-9779-3bf817b0c3ef.png)
 2. Open Azure Cloud Shell
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/AzureCLI.png)
-3. In Cloud Shell execute the following command but change before the values [StudentName] and [Location]
+3. In Cloud Shell execute the following command but change before the values [StudentRGName] and [Location]
    ```
-   az group create --name [StudentName] --location [Location]
+   az group create --name [StudentRGName] --location [Location]
    ```
 4. The Output should looks like the following
 
 ## 3.3. Deploy Panorama in Azure
+As next we will create the Panorama from a pre-staged imgage, after successfully creating the Resource Group.
+
+1. Please go back to the Azure Cloud Shell
+2. In the following command updat the following variables with yours:
+   1. [StudentRGName] #Use the same same of the previous created Resource Group in Step 3.2.3
+   2. [VM-Name]
+   3. [YourPassword] 
+
+Don't change any other variables
+
+```
+az vm create -g [StudentRGName] -n [VM-Name] --authentication-type password --admin-password [YourPassword] --image /subscriptions/d47f1af8-9795-4e86-bbce-da72cfd0f8ec/resourceGroups/ImageRG/providers/Microsoft.Compute/galleries/PsLab/images/psazurelab/versions/1.0.0 --specialized --public-ip-sku Standard  --plan-name byol --plan-publisher paloaltonetworks --plan-product panorama --size Standard_D4_v2
+```
+4. After you made the changes, execute the command in Azure Cloud Shell
+5. The Output should looks like the following
+
 
 ## 3.3. Configure Panorama
 
