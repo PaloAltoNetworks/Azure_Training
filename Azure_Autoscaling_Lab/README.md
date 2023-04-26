@@ -121,6 +121,7 @@ az vm create -g [StudentRGName] -n [VM-Name] --authentication-type password --ad
 ```
 4. After you made the changes, execute the command in Azure Cloud Shell
 5. The Output should looks like the following
+![Screenshot 2023-04-26 at 16 49 00](https://user-images.githubusercontent.com/30934288/234614674-e175355c-7f8a-4b09-9844-483cc08c5b8f.png)
 
 
 ## 3.3. Configure Panorama
