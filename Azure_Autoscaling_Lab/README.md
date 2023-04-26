@@ -123,14 +123,14 @@ az vm create -g [StudentRGName] -n [VM-Name] --authentication-type password --ad
 5. The Output should looks like the following
 ![Screenshot 2023-04-26 at 16 49 00](https://user-images.githubusercontent.com/30934288/234614674-e175355c-7f8a-4b09-9844-483cc08c5b8f.png)
 6. Check your Ressource Group in Aure if the Deployment is completed
-   Picture
+   ![Screenshot 2023-04-26 at 17 03 30](https://user-images.githubusercontent.com/30934288/234620953-dab08ee5-a158-49c2-926a-ff088b4e32a9.png)
 7. In the Ressource Group select your NSG
-   picture
+   ![Screenshot 2023-04-26 at 17 04 28](https://user-images.githubusercontent.com/30934288/234620991-cf7531ea-f5cd-485b-a2b8-adbc51f66ef9.png)
 8. Now create an Inbound Security Rule to allow HTTPS traffic to your newly created Panorama
-   picture
+   ![Screenshot 2023-04-26 at 17 05 09](https://user-images.githubusercontent.com/30934288/234621018-b2cb1e53-d67f-40aa-8412-119b59ed3ba4.png)
 9. Login to your Panorama via the Public IP associated to it
    1.  https://[Public-IP]
-   Picture 
+   ![Screenshot 2023-04-26 at 17 08 58](https://user-images.githubusercontent.com/30934288/234621053-6a3c2eb5-fc13-4af5-b40a-67a679aae773.png)
 10. Is the Login working? No? Why?
 
 
