@@ -8,7 +8,11 @@
   - [2.2. What You'll do in the whole Lab](#22-what-youll-do-in-the-whole-lab)
 - [3. Deploy Panorama](#3-deploy-panorama)
   - [3.1. What you'll do](#31-what-youll-do)
-  - [3.2. Deploy Panorama](#32-deploy-panorama)
+  - [3.2. Deploy new Resource Group in Azure](#32-deploy-new-resource-group-in-azure)
+  - [3.3. Deploy Panorama in Azure](#33-deploy-panorama-in-azure)
+  - [3.3. Configure Panorama](#33-configure-panorama)
+  - [3.4. Create Deployment Profile in Customer Support Portal (CSP)](#34-create-deployment-profile-in-customer-support-portal-csp)
+  - [3.4. Configure Software License Plugin](#34-configure-software-license-plugin)
 - [4. Deploy Azure environment](#4-deploy-azure-environment)
   - [4.1. What you'll need](#41-what-youll-need)
   - [4.2. Validate Deployment](#42-validate-deployment)
@@ -79,9 +83,33 @@ For this workshop we have automated the deployment of the lab environment and y
 In this part you will deploy a single Panorama with a Public IP to garuantee internet connectivity and do a basic configuration of the Panorama. In the next step you will install the Software License plugin and configure it.
 
 ## 3.1. What you'll do
+- Login to Azure
+- Deploy a Resource Group for the Panorama
+- Deploy Panorama from a pre-staged image
+- Update NSG
+- Configure Panorama
+- Create Deployment Profile in CSP
+- Configure software License Plugin
 
-## 3.2. Deploy Panorama
-To deploy the Spoke Ressource make a right click (open in new tab) on the following button [<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FPaloAltoNetworks%2FAzure_Training%2Fmain%2FAzure_Autoscaling_Lab%2Fpanoimage.json)
+
+## 3.2. Deploy new Resource Group in Azure
+1. Login in to Azure Portal (https://portal.azure.com) 
+![AzurePortal](https://user-images.githubusercontent.com/30934288/233334030-b7fb093a-5cec-4083-9779-3bf817b0c3ef.png)
+2. Open Azure Cloud Shell
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/AzureCLI.png)
+3. In Cloud Shell execute the following command but change before the values [StudentName] and [Location]
+   ```
+   az group create --name [StudentName] --location [Location]
+   ```
+
+## 3.3. Deploy Panorama in Azure
+
+## 3.3. Configure Panorama
+
+## 3.4. Create Deployment Profile in Customer Support Portal (CSP)
+
+## 3.4. Configure Software License Plugin
+
 
 <br/><br/>
 
@@ -140,10 +168,10 @@ To complete this lab, you'll need:
     
   ```
     type=dhcp-client
-    auth-key=INSTUCTOR WILL PROVIDE KEY
-    panorama-server=NSTUCTOR WILL PROVIDE IP
-    dgname=Student1   #Replace the Number with Studentnumber provided by the Instructor
-    tplname=Workshop-Student1-ST   #Replace the Number with Studentnumber provided by the Instructor
+    auth-key=SoftwareNGFW Plugin
+    panorama-server=SoftwareNGFW Plugin
+    dgname=Student1   #Replace it with the Name you created 
+    tplname=Workshop-Student1-ST   #Replace it with the Name you created 
     plugin-op-commands=panorama-licensing-mode-on
     dhcp-send-hostname=yes
     dhcp-send-client-id=yes
