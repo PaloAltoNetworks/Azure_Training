@@ -101,6 +101,7 @@ In this part you will deploy a single Panorama with a Public IP to garuantee int
    ```
    az group create --name [StudentName] --location [Location]
    ```
+4. The Output should looks like the following
 
 ## 3.3. Deploy Panorama in Azure
 
