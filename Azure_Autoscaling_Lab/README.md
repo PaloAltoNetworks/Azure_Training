@@ -122,6 +122,16 @@ az vm create -g [StudentRGName] -n [VM-Name] --authentication-type password --ad
 4. After you made the changes, execute the command in Azure Cloud Shell
 5. The Output should looks like the following
 ![Screenshot 2023-04-26 at 16 49 00](https://user-images.githubusercontent.com/30934288/234614674-e175355c-7f8a-4b09-9844-483cc08c5b8f.png)
+6. Check your Ressource Group in Aure if the Deployment is completed
+   Picture
+7. In the Ressource Group select your NSG
+   picture
+8. Now create an Inbound Security Rule to allow HTTPS traffic to your newly created Panorama
+   picture
+9. Login to your Panorama via the Public IP associated to it
+   1.  https://[Public-IP]
+   Picture 
+10. Is the Login working? No? Why?
 
 
 ## 3.3. Configure Panorama
