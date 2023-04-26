@@ -102,6 +102,8 @@ In this part you will deploy a single Panorama with a Public IP to garuantee int
    az group create --name [StudentRGName] --location [Location]
    ```
 4. The Output should looks like the following
+![Screenshot 2023-04-26 at 16 34 21](https://user-images.githubusercontent.com/30934288/234610062-a2b082b9-22b8-430b-949e-26ac35bc28bf.png)
+
 
 ## 3.3. Deploy Panorama in Azure
 As next we will create the Panorama from a pre-staged imgage, after successfully creating the Resource Group.
