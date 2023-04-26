@@ -110,7 +110,7 @@ As next we will create the Panorama from a pre-staged imgage, after successfully
 
 1. Please go back to the Azure Cloud Shell
 2. In the following command updat the following variables with yours:
-   1. [StudentRGName] #Use the same same of the previous created Resource Group in the Chapter [Deploy Resource Group](#32-deploy-new-resource-group-in-azure)
+   1. [StudentRGName] #Use the same same of the previous created Resource Group in the Chapter [Deploy new Resource Group in Azure](#32-deploy-new-resource-group-in-azure)
    2. [VM-Name]
    3. [YourPassword] 
 
