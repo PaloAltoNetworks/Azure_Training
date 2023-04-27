@@ -133,13 +133,32 @@ az vm create -g [StudentRGName] -n [VM-Name] --authentication-type password --ad
    ![Screenshot 2023-04-26 at 17 08 58](https://user-images.githubusercontent.com/30934288/234621053-6a3c2eb5-fc13-4af5-b40a-67a679aae773.png)
 10. Is the Login working? No? Why?
 
+<br/>
 
 ## 3.3. Configure Panorama
+As next you have to confugre the Panorama.
+
+1. Login to your Panorama https://[Public-IP]
+2. In the Panorama check if you can see a Serialnummber is associated to it
+   Picture
+3. As next Create a Device Group, Template, and Template Stack. See the picture below as example
+   Picture
+4. Once you done it commit your changes to the Panorama
+
+<br/>
 
 ## 3.4. Create Deployment Profile in Customer Support Portal (CSP)
+Here you will create a dedicated Flex Credits Deployment Profile for Lab. 
+
+1. asds
+2. asd
+3. asd
+4. asd
+5. ads
 
 ## 3.4. Configure Software License Plugin
-
+Here you will configure the Software License Plugin in your Panorama to perform the next activities. For that you need your information from the CSP
+Follow the following guide to configure your Plugin.
 
 <br/><br/>
 
