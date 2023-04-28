@@ -158,7 +158,7 @@ Here you will create a dedicated Flex Credits Deployment Profile for Lab.
 3. On the Support Portal Page on the left side go to Assets -> Software NGFW Credits
 4. On the Prisma NFGW Credits Pool click on Create Deployment Profile
    ![Screenshot 2023-04-28 at 10 34 00](https://user-images.githubusercontent.com/30934288/235103582-e0457306-91e1-41f7-9810-89e2e684e9df.png)
-5. Select the following and click Next
+5. Select the following as shown on the picture below and click Next
    ![Screenshot 2023-04-28 at 10 35 37](https://user-images.githubusercontent.com/30934288/235103668-d6dca65f-7ad0-420f-89dc-4fdb0adadc14.png)
 6. In the Deployment Profile use the following and replace Instructor-Lab under "Profile Name" with "YourName-workshop"
    ![Screenshot 2023-04-28 at 10 37 12](https://user-images.githubusercontent.com/30934288/235103752-1f1c0959-87a5-4654-bb76-03d472fad2b6.png)
