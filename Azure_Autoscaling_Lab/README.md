@@ -140,9 +140,11 @@ As next you have to confugre the Panorama.
 
 1. Login to your Panorama https://[Public-IP]
 2. In the Panorama check if you can see a Serialnummber is associated to it
-   Picture
+   ![Screenshot 2023-04-28 at 10 42 49](https://user-images.githubusercontent.com/30934288/235103168-d62230df-38c1-43e4-862d-7fb8c52a9d1a.png)
 3. As next Create a Device Group, Template, and Template Stack. See the picture below as example
-   Picture
+   ![Screenshot 2023-04-28 at 10 44 34](https://user-images.githubusercontent.com/30934288/235103331-a855e378-c39d-473a-8a74-3e3b51f60fec.png)
+   ![Screenshot 2023-04-28 at 10 44 48](https://user-images.githubusercontent.com/30934288/235103377-2ab1e849-4f35-4208-a429-628d6516bd13.png)
+
 4. Once you done it commit your changes to the Panorama
 
 <br/>
@@ -152,17 +154,17 @@ Here you will create a dedicated Flex Credits Deployment Profile for Lab.
 
 1. Login with your PANW Credentials at the Customer Support Portal https://support.paloaltonetworks.com/
 2. In the Support Portal Change the Account Seletor to 132205 - Palo Alto Networks - Professional Services
-   Picture
+   ![Screenshot 2023-04-28 at 10 27 55](https://user-images.githubusercontent.com/30934288/235103488-dec40a3b-8b52-4e86-b47f-63a5ea94399e.png)
 3. On the Support Portal Page on the left side go to Assets -> Software NGFW Credits
 4. On the Prisma NFGW Credits Pool click on Create Deployment Profile
-   Picture
+   ![Screenshot 2023-04-28 at 10 34 00](https://user-images.githubusercontent.com/30934288/235103582-e0457306-91e1-41f7-9810-89e2e684e9df.png)
 5. Select the following and click Next
-   Picture
+   ![Screenshot 2023-04-28 at 10 35 37](https://user-images.githubusercontent.com/30934288/235103668-d6dca65f-7ad0-420f-89dc-4fdb0adadc14.png)
 6. In the Deployment Profile use the following and replace Instructor-Lab under "Profile Name" with "YourName-workshop"
-   Picture
+   ![Screenshot 2023-04-28 at 10 37 12](https://user-images.githubusercontent.com/30934288/235103752-1f1c0959-87a5-4654-bb76-03d472fad2b6.png)
 7. Click "Create Deployment Profile"
 8. Verify that your Deployment Profile is successfully created
-   picture
+   ![Screenshot 2023-04-28 at 10 40 09](https://user-images.githubusercontent.com/30934288/235103850-9cd1b2d9-f585-436a-bb9a-97c1d21a9b39.png)
 
 ## 3.4. Configure Software License Plugin
 Here you will configure the Software License Plugin in your Panorama to perform the next activities. For that you need your information from the CSP
@@ -174,13 +176,13 @@ The Instructor will provide you during the Lab the API License Key.
     <summary style="color:White">Expand For Details</summary>
 
 1. Bootstrap Definitions
-   Picture
+   ![Screenshot 2023-04-28 at 10 50 19](https://user-images.githubusercontent.com/30934288/235103950-762c9686-da63-4eed-90c1-74b34de9f72d.png)
 2. License Managers
-   Picture
+   ![Screenshot 2023-04-28 at 10 50 30](https://user-images.githubusercontent.com/30934288/235104006-bf031287-b7e1-4595-ab60-380e0b3a7123.png)
   </details>
 
 After you commited your changes your should see all information by selecting "Show Bootstrap Paramaters" under License Managers
-Picture
+![Screenshot 2023-04-28 at 10 52 55](https://user-images.githubusercontent.com/30934288/235104048-89b25d7b-b43c-4c8d-949b-241a0bf4b649.png)
 <br/><br/>
 
 # 4. Deploy Azure environment
