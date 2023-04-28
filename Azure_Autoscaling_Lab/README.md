@@ -150,16 +150,37 @@ As next you have to confugre the Panorama.
 ## 3.4. Create Deployment Profile in Customer Support Portal (CSP)
 Here you will create a dedicated Flex Credits Deployment Profile for Lab. 
 
-1. asds
-2. asd
-3. asd
-4. asd
-5. ads
+1. Login with your PANW Credentials at the Customer Support Portal https://support.paloaltonetworks.com/
+2. In the Support Portal Change the Account Seletor to 132205 - Palo Alto Networks - Professional Services
+   Picture
+3. On the Support Portal Page on the left side go to Assets -> Software NGFW Credits
+4. On the Prisma NFGW Credits Pool click on Create Deployment Profile
+   Picture
+5. Select the following and click Next
+   Picture
+6. In the Deployment Profile use the following and replace Instructor-Lab under "Profile Name" with "YourName-workshop"
+   Picture
+7. Click "Create Deployment Profile"
+8. Verify that your Deployment Profile is successfully created
+   picture
 
 ## 3.4. Configure Software License Plugin
 Here you will configure the Software License Plugin in your Panorama to perform the next activities. For that you need your information from the CSP
-Follow the following guide to configure your Plugin.
+Follow the following guide to configure your Plugin. https://docs.paloaltonetworks.com/vm-series/11-0/vm-series-deployment/license-the-vm-series-firewall/use-panorama-based-software-firewall-license-management
 
+The Instructor will provide you during the Lab the API License Key.
+
+<details>
+    <summary style="color:White">Expand For Details</summary>
+
+1. Bootstrap Definitions
+   Picture
+2. License Managers
+   Picture
+  </details>
+
+After you commited your changes your should see all information by selecting "Show Bootstrap Paramaters" under License Managers
+Picture
 <br/><br/>
 
 # 4. Deploy Azure environment
