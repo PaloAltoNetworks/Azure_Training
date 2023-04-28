@@ -173,7 +173,7 @@ Follow the following guide to configure your Plugin. https://docs.paloaltonetwor
 The Instructor will provide you during the Lab the API License Key.
 
 <details>
-    <summary style="color:White">Expand For Details</summary>
+    <summary style="color:black">Expand For Details</summary>
 
 1. Bootstrap Definitions
    ![Screenshot 2023-04-28 at 10 50 19](https://user-images.githubusercontent.com/30934288/235103950-762c9686-da63-4eed-90c1-74b34de9f72d.png)
