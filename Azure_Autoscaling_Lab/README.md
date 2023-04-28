@@ -224,7 +224,7 @@ To complete this lab, you'll need:
       ``` mv ./example.tfvars terraform.tfvars```
   </details>
 8. Modify the ```terraform.tfvars``` inside Cloud shell with the ```vi``` command
-   1. Modify the following variables in the File
+   1. Modify the following variables in the File.
    
    ```
    resource_group_name = <StudentName>-RG
@@ -235,8 +235,8 @@ To complete this lab, you'll need:
 
    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/example.png)
 
-9. As next switch to the folder ```inbound_files``` and rename the ```init-cfg.sample.txt``` to ```init-cfg.txt``` using the ```mv``` command
-10. Modify the ```init-cfg.txt``` inside Cloud shell with the ```vi``` command. 
+9.  As next switch to the folder ```inbound_files``` and rename the ```init-cfg.sample.txt``` to ```init-cfg.txt``` using the ```mv``` command
+10. Modify the ```init-cfg.txt``` inside Cloud shell with the ```vi``` command. Make sure you added the same name of the Device Group and Template Stack you created in your Panorama. 
     
   ```
     type=dhcp-client
@@ -285,10 +285,6 @@ To complete this lab, you'll need:
 - Validate Deployment
 
 15. Login into Panorama Public IP
-    1.  Instructor will Panorama IP 
-    2.  Instructor will Username
-    3.  Instructor will Password
-
 16. Once you logged into the Panorama Navigate to the **Panorama** tab validate you can see your newly deployed Firewalls **(The deployment and bootstrapping process can take up to 30-45 minutes)**. If the Deployment was succesful you will see the following output in **Panorama -> Managed Devices -> Summary**
    
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panoramacomplete.png)
@@ -310,10 +306,11 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
 - Create a Route Table / UDR to overwrite the default behaviour and redirect the traffic to the ILB Frontend IP
 
 ### 5.1.1. Deploy the Spoke Ressource Group
-1. To deploy the Spoke Ressource make a right click (open in new tab) on the following button [<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FPaloAltoNetworks%2FAzure_Training%2Fmain%2FAzure_Autoscaling_Lab%2Fspokedeployment.json)
+1. To deploy the Spoke Ressource make a right click (open in new tab) on the following button 
+   [<img src="https://github.com/PaloAltoNetworks/Azure_Training/blob/main/Azure_Autoscaling_Lab/Images/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FPaloAltoNetworks%2FAzure_Training%2Fmain%2FAzure_Autoscaling_Lab%2Fspokedeployment.json)
 2. In the new tab you see the following
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/arm.png)
-3. Change the following paramaters in the:
+1. Change the following paramaters in the:
     
   ```
     Subscription - Leave default
