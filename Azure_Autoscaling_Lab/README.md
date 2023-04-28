@@ -98,6 +98,7 @@ In this part you will deploy a single Panorama with a Public IP to garuantee int
 2. Open Azure Cloud Shell
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/AzureCLI.png)
 3. In Cloud Shell execute the following command but change before the values [StudentRGName] and [Location]
+   Available Regions are: North Europe, East US, UK South, UAE North, Australia Central
    ```
    az group create --name [StudentRGName] --location [Location]
    ```
