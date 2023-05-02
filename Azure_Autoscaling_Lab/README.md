@@ -202,7 +202,7 @@ To complete this lab, you'll need:
 ![AzurePortal](https://user-images.githubusercontent.com/30934288/233334030-b7fb093a-5cec-4083-9779-3bf817b0c3ef.png)
 2. Open Azure Cloud Shell
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/AzureCLI.png)
-3. click on Create storage
+3. click on Create storage. In some case it will not create a Storage Account. In that case click in "Show advanced settings" and create your own storage account.
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/storagecli.png)
 4. Once the creation of the storage is completed you will see the following
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/cloudshell.png)
