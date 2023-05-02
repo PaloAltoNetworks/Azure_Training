@@ -83,7 +83,7 @@ inbound_vmseries_vm_size  = "Standard_D3_v2"
 common_vmseries_sku       = "byol"
 
 inbound_count_minimum  = 2
-inbound_count_maximum  = 5
+inbound_count_maximum  = 3
 
 
 autoscale_metrics = {
