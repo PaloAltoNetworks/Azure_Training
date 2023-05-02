@@ -20,7 +20,7 @@ network_security_groups = {
 }
 
 allow_inbound_mgmt_ips = [
-  "0.0.0.0/0", # Put your own public IP address here, visit "https://ifconfig.me/"
+  "0.0.0.0/0", # Don't change it
 ]
 
 allow_inbound_data_ips = []
