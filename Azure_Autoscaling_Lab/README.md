@@ -231,7 +231,6 @@ To complete this lab, you'll need:
    resource_group_name = <StudentName>-RG
    virtual_network_name = <StudentName>-vnet
    storage_account_name = "<studentname>azurelab" #Important only lowercase allowed
-   allow_inbound_mgmt_ips
    ```
 
    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/example.png)
