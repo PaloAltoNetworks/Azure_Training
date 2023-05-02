@@ -1,8 +1,8 @@
 type=dhcp-client
-panorama-server=XX.XX.XX.XX
-auth-key=ASK INSTRUCTOR
-dgname=Student1
-tplname=Workshop-Student1-ST
+panorama-server=X.X.X.X
+auth-key=From Software licensing Plugin
+dgname=From Software licensing Plugin
+tplname=From Software licensing Plugin
 plugin-op-commands=panorama-licensing-mode-on
 dhcp-send-hostname=yes
 dhcp-send-client-id=yes
