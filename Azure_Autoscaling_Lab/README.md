@@ -143,7 +143,7 @@ As next you have to confugre the Panorama.
 2. In the Panorama check if you can see a Serialnummber is associated to it
    ![Screenshot 2023-04-28 at 10 42 49](https://user-images.githubusercontent.com/30934288/235103168-d62230df-38c1-43e4-862d-7fb8c52a9d1a.png)
 3. Copy the the Serialnummber and re-enter it under the Panorama Tab -> Setup -> Management -> General Settings
-   Picture 
+   ![Screenshot 2023-05-03 at 10 40 41](https://user-images.githubusercontent.com/30934288/235870102-b21ae1db-3df3-451e-b97d-177fb0aac110.png)
 4. As next Create a Device Group, Template, and Template Stack. See the picture below as example
    ![Screenshot 2023-04-28 at 10 44 34](https://user-images.githubusercontent.com/30934288/235103331-a855e378-c39d-473a-8a74-3e3b51f60fec.png)
    ![Screenshot 2023-04-28 at 10 44 48](https://user-images.githubusercontent.com/30934288/235103377-2ab1e849-4f35-4208-a429-628d6516bd13.png)
