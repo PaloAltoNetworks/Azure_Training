@@ -165,8 +165,9 @@ Here you will create a dedicated Flex Credits Deployment Profile for Lab.
    ![Screenshot 2023-04-28 at 10 35 37](https://user-images.githubusercontent.com/30934288/235103668-d6dca65f-7ad0-420f-89dc-4fdb0adadc14.png)
 6. In the Deployment Profile use the following and replace Instructor-Lab under "Profile Name" with "YourName-workshop"
    ![Screenshot 2023-04-28 at 10 37 12](https://user-images.githubusercontent.com/30934288/235103752-1f1c0959-87a5-4654-bb76-03d472fad2b6.png)
-7. Click "Create Deployment Profile"
-8. Verify that your Deployment Profile is successfully created
+7. Hit OK and reload the UI. Check if a pending commit on the Panorama is needed. If yes, commit to Panorama.
+8. Click "Create Deployment Profile"
+9. Verify that your Deployment Profile is successfully created
    ![Screenshot 2023-04-28 at 10 40 09](https://user-images.githubusercontent.com/30934288/235103850-9cd1b2d9-f585-436a-bb9a-97c1d21a9b39.png)
 
 ## 3.4. Configure Software License Plugin
