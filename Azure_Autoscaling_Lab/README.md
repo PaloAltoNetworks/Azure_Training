@@ -159,7 +159,7 @@ Here you will create a dedicated Flex Credits Deployment Profile for Lab.
 3. On the Support Portal Page on the left side go to Assets -> Software NGFW Credits
 4. On the Prisma NFGW Credits Pool click on Create Deployment Profile
    ![Screenshot 2023-04-28 at 10 34 00](https://user-images.githubusercontent.com/30934288/235103582-e0457306-91e1-41f7-9810-89e2e684e9df.png)
-5. Select the following as shown on the picture below and click Next
+5. Select the following as shown on the picture below and click Next<br/>
    ![Screenshot 2023-04-28 at 10 35 37](https://user-images.githubusercontent.com/30934288/235103668-d6dca65f-7ad0-420f-89dc-4fdb0adadc14.png)
 6. In the Deployment Profile use the following and replace Instructor-Lab under "Profile Name" with "YourName-workshop"
    ![Screenshot 2023-04-28 at 10 37 12](https://user-images.githubusercontent.com/30934288/235103752-1f1c0959-87a5-4654-bb76-03d472fad2b6.png)
@@ -274,8 +274,12 @@ To complete this lab, you'll need:
 </details>
 <br/>
 
-14.  Once the ```terraform apply``` is completed you will see the following output
+14.  Once the ```terraform apply``` is completed you will see the following output<br/>
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/Complete.png)
+
+15. To get the Firewall password and Username run the following commands and copy it to a notepad<br/>
+    ```terraform outout username```<br/>
+    ```terraform output password```
 
 ## 4.2. Validate Deployment
 
@@ -289,7 +293,7 @@ To complete this lab, you'll need:
    
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panoramacomplete.png)
 
-17. You succesfull deployed your Environment if you can the above output
+17. You succesfull deployed your Environment if you can see the above output
 
 
 # 5. Deploy Spoke Ressource
