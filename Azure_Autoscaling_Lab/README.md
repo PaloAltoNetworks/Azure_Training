@@ -221,16 +221,17 @@ Here you will configure the previous create Device Group and Template on Panoram
    4. Config Tab
       1. Virtual Router: Untrust-VR (Create a new)
       2. Security Zone: Untrust (Create a new)
-      Picture
+      ![Screenshot 2023-05-08 at 08 56 54](https://user-images.githubusercontent.com/30934288/236756039-e82b9db5-2445-45c5-af5b-f3017274adec.png)
    5. IPv4 Tab
       1. DHCP Client
       2. Unselect "Automatically create default route pointing to default gateway porivdd by server"
-      Picture
+      ![Screenshot 2023-05-08 at 08 57 03](https://user-images.githubusercontent.com/30934288/236756078-bce5fa4d-6c3a-496d-9fe7-e60cf7d98ba3.png)
    6. Advanced Tab
       1. Management Profile: Select the previous create the profile
+      ![Screenshot 2023-05-08 at 08 57 17](https://user-images.githubusercontent.com/30934288/236756114-932b05c8-0e76-4dbc-9fe4-641ae870120d.png)
 6. Once you completed the steps cick Ok.
 7. You should see the following now on your Panorama
-   Picture
+   ![Screenshot 2023-05-08 at 08 57 31](https://user-images.githubusercontent.com/30934288/236756139-85b68421-7c14-48b8-9dad-ed6bbeabdd3a.png)
 
 # 4. Deploy Azure environment
 
