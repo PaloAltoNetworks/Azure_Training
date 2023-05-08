@@ -211,11 +211,26 @@ Here you will configure the previous create Device Group and Template on Panoram
       2. Unselect "Automatically create default route pointing to default gateway porivdd by server"
       ![Screenshot 2023-05-08 at 08 37 25](https://user-images.githubusercontent.com/30934288/236754556-53d8e98e-3c08-4360-881f-4ee75df617ad.png)
    6. Advanced Tab
-      1. Management Profile (Create a new profile)
-      2. See below for settings
+      1. Management Profile (Create a new profile). See settings below
          ![Screenshot 2023-05-08 at 08 38 00](https://user-images.githubusercontent.com/30934288/236754603-e3614186-1842-4971-9f94-16434e7ea853.png)
 4. Once you completed the steps cick Ok.
-  
+5. Use the following seetings for the Trust Interface (Ethernet1/2)
+   1. Slot: Slot 1
+   2. Interface Name: Ethernet1/1
+   3. Interface Type: Layer3
+   4. Config Tab
+      1. Virtual Router: Untrust-VR (Create a new)
+      2. Security Zone: Untrust (Create a new)
+      Picture
+   5. IPv4 Tab
+      1. DHCP Client
+      2. Unselect "Automatically create default route pointing to default gateway porivdd by server"
+      Picture
+   6. Advanced Tab
+      1. Management Profile: Select the previous create the profile
+6. Once you completed the steps cick Ok.
+7. You should see the following now on your Panorama
+   Picture
 
 # 4. Deploy Azure environment
 
