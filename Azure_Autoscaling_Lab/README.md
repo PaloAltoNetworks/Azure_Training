@@ -196,7 +196,7 @@ Here you will configure the previous create Device Group and Template on Panoram
 
 ### 3.5.1 Template 
 1. Login to you Panorama and select in the Top bar under Templates "Network"
-   Picture
+   ![Screenshot 2023-05-08 at 08 32 10](https://user-images.githubusercontent.com/30934288/236754423-41cc626e-4425-4f8d-9f18-36eb044050f1.png)
 2. Select on left bar "Interfaces" and click "Add Interface"
 3. Use the following seetings for the Untrust Interface (Ethernet1/1)
    1. Slot: Slot 1
@@ -205,13 +205,15 @@ Here you will configure the previous create Device Group and Template on Panoram
    4. Config Tab
       1. Virtual Router: Untrust-VR (Create a new)
       2. Security Zone: Untrust (Create a new)
+      ![Screenshot 2023-05-08 at 08 37 14](https://user-images.githubusercontent.com/30934288/236754504-1f4b2069-53ac-4c3b-a530-33dc0297edab.png)
    5. IPv4 Tab
       1. DHCP Client
       2. Unselect "Automatically create default route pointing to default gateway porivdd by server"
+      ![Screenshot 2023-05-08 at 08 37 25](https://user-images.githubusercontent.com/30934288/236754556-53d8e98e-3c08-4360-881f-4ee75df617ad.png)
    6. Advanced Tab
       1. Management Profile (Create a new profile)
       2. See below for settings
-         Picture
+         ![Screenshot 2023-05-08 at 08 38 00](https://user-images.githubusercontent.com/30934288/236754603-e3614186-1842-4971-9f94-16434e7ea853.png)
 4. Once you completed the steps cick Ok.
   
 
