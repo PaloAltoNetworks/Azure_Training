@@ -449,16 +449,16 @@ Here you will configure the previous create Device Group on Panorama.
 
 1. In the Panorama go to the Policies tab and make sure your Student Device Group is select. Under Security Policies you should see the following rules:
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/policies.png)
-1. In the Secuirty -> Pre Rules create the following rules
+2. In the Secuirty -> Pre Rules create the following rules
    1. Allow Inbound HTTP Traffic from your Public IP
    2. Allow Inbound SSH Traffic from your Public IP
    3. Deny all other traffic
-2. Under the NAT section, create the following NAT Rules
+3. Under the NAT section, create the following NAT Rules
    1. Inbound NAT, HTTP to the Webserver IP
    2. Inbound NAT, SSH to the Webserver IP
    3. Outbound NAT, all traffice from Trust to Untrust.
-3. Commit your changes to the Panorama
-4. Push your changes to your Firewalls
+4. Commit your changes to the Panorama
+5. Push your changes to your Firewalls
 
 <details>
   <summary style="color:black">Expand If you need Help</summary>
@@ -472,7 +472,7 @@ Here you will configure the previous create Device Group on Panorama.
 </details>
 <br/>
 
-5. Once you completed all steps Push your changes to the Panorama and Firewalls. check if your Firewalls are all **In Sync**
+6. Once you completed all steps Push your changes to the Panorama and Firewalls. check if your Firewalls are all **In Sync**
 
 ## 7.3 Configure Webserver
 
