@@ -100,7 +100,7 @@ In this part you will deploy a single Panorama with a Public IP to guarantee int
 2. Open Azure Cloud Shell
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/AzureCLI.png)
 3. In Cloud Shell execute the following command but change before the values [StudentRGName] and [Location]
-   Available Regions are: North Europe, East US, UK South, UAE North, Australia Central
+   Available Regions are: **North Europe, East US, UK South, UAE North, Australia Central**
    ```
    az group create --name [StudentRGName] --location [Location]
    ```
@@ -150,7 +150,6 @@ As next you have to confugre the Panorama.
 5. As next Create a Device Group, Template, and Template Stack. See the picture below as example
    ![Screenshot 2023-04-28 at 10 44 34](https://user-images.githubusercontent.com/30934288/235103331-a855e378-c39d-473a-8a74-3e3b51f60fec.png)
    ![Screenshot 2023-04-28 at 10 44 48](https://user-images.githubusercontent.com/30934288/235103377-2ab1e849-4f35-4208-a429-628d6516bd13.png)
-
 6. Once you done it commit your changes to the Panorama
 
 <br/>
