@@ -436,28 +436,30 @@ Here you will configure the previous create Template on Panorama.
    ![Screenshot 2023-05-08 at 08 32 10](https://user-images.githubusercontent.com/30934288/236754423-41cc626e-4425-4f8d-9f18-36eb044050f1.png)
 2. Select on left bar "Virtual Routers"
 3. Select at first the previous created "Untrust-VR"
-   1. Under "Static Routes" create the 
+   1. Under "Static Routes" create the following routes. **Please make sure you provide the correct next hop IP Address and using the correct spoke vnet CIDR block. The values below are only examples and based on the Instructor Lab configuration**
+   Picture
+   2. Once Completed the configuration click **OK**
+4. As next select the the previous created "Trust-VR" 
+   1. Under "Static Routes" create the following routes. **Please make sure you provide the correct next hop IP Address and using the correct spoke vnet CIDR block. The values below are only examples and based on the Instructor Lab configuration**
+   Picture
 
 <br/>
 
 ## 7.2 Configure Panorama Device Group for VM-Series.
 Here you will configure the previous create Device Group on Panorama.
 
-1. Login into the Panorama with your Student Account
-2. In the Panorama go to the Policies tab and make sure your Student Device Group is select. Under Security Policies you should see the following rules:
+1. In the Panorama go to the Policies tab and make sure your Student Device Group is select. Under Security Policies you should see the following rules:
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/policies.png)
-3. In the Secuirty -> Pre Rules create the following rules
+1. In the Secuirty -> Pre Rules create the following rules
    1. Allow Inbound HTTP Traffic from your Public IP
    2. Allow Inbound SSH Traffic from your Public IP
    3. Deny all other traffic
-4. Under the NAT section, create the following NAT Rules
+2. Under the NAT section, create the following NAT Rules
    1. Inbound NAT, HTTP to the Webserver IP
    2. Inbound NAT, SSH to the Webserver IP
    3. Outbound NAT, all traffice from Trust to Untrust.
-5. Commit your changes to the Panorama
-6. Push your changes to your Firewalls
-
-
+3. Commit your changes to the Panorama
+4. Push your changes to your Firewalls
 
 <details>
   <summary style="color:black">Expand If you need Help</summary>
@@ -470,6 +472,8 @@ Here you will configure the previous create Device Group on Panorama.
 
 </details>
 <br/>
+
+5. Once you completed all steps Push your changes to the Panorama and Firewalls. check if your Firewalls are all **In Sync**
 
 ## 7.3 Configure Webserver
 
