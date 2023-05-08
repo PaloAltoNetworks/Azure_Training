@@ -437,12 +437,11 @@ Here you will configure the previous create Template on Panorama.
 2. Select on left bar "Virtual Routers"
 3. Select at first the previous created "Untrust-VR"
    1. Under "Static Routes" create the following routes. **Please make sure you provide the correct next hop IP Address and using the correct spoke vnet CIDR block. The values below are only examples and based on the Instructor Lab configuration**
-   Picture
+   ![Screenshot 2023-05-08 at 09 20 12](https://user-images.githubusercontent.com/30934288/236762878-6b9997af-5949-47ff-b9ff-efca62627f9f.png)
    2. Once Completed the configuration click **OK**
 4. As next select the the previous created "Trust-VR" 
    1. Under "Static Routes" create the following routes. **Please make sure you provide the correct next hop IP Address and using the correct spoke vnet CIDR block. The values below are only examples and based on the Instructor Lab configuration**
-   Picture
-
+   ![Screenshot 2023-05-08 at 09 26 55](https://user-images.githubusercontent.com/30934288/236762921-a87f1f5e-091b-4872-accc-5b4c5b4f4e9d.png)
 <br/>
 
 ## 7.2 Configure Panorama Device Group for VM-Series.
