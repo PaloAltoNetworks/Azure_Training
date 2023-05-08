@@ -13,6 +13,8 @@
   - [3.3. Configure Panorama](#33-configure-panorama)
   - [3.4. Create Deployment Profile in Customer Support Portal (CSP)](#34-create-deployment-profile-in-customer-support-portal-csp)
   - [3.4. Configure Software License Plugin](#34-configure-software-license-plugin)
+  - [3.5. Configure Panorama Device Group and Template for VM-Series deployment](#35-configure-panorama-device-group-and-template-for-vm-series-deployment)
+    - [3.5.1 Template](#351-template)
 - [4. Deploy Azure environment](#4-deploy-azure-environment)
   - [4.1. What you'll need](#41-what-youll-need)
   - [4.2. Validate Deployment](#42-validate-deployment)
@@ -188,6 +190,30 @@ The Instructor will provide you during the Lab the API License Key.
 After you commited your changes your should see all information by selecting "Show Bootstrap Paramaters" under License Managers
 ![Screenshot 2023-04-28 at 10 52 55](https://user-images.githubusercontent.com/30934288/235104048-89b25d7b-b43c-4c8d-949b-241a0bf4b649.png)
 <br/><br/>
+
+## 3.5. Configure Panorama Device Group and Template for VM-Series deployment
+Here you will configure the previous create Device Group and Template on Panorama.
+
+### 3.5.1 Template 
+1. Login to you Panorama and select in the Top bar under Templates "Network"
+   Picture
+2. Select on left bar "Interfaces" and click "Add Interface"
+3. Use the following seetings for the Untrust Interface (Ethernet1/1)
+   1. Slot: Slot 1
+   2. Interface Name: Ethernet1/1
+   3. Interface Type: Layer3
+   4. Config Tab
+      1. Virtual Router: Untrust-VR (Create a new)
+      2. Security Zone: Untrust (Create a new)
+   5. IPv4 Tab
+      1. DHCP Client
+      2. Unselect "Automatically create default route pointing to default gateway porivdd by server"
+   6. Advanced Tab
+      1. Management Profile (Create a new profile)
+      2. See below for settings
+         Picture
+4. Once you completed the steps cick Ok.
+  
 
 # 4. Deploy Azure environment
 
