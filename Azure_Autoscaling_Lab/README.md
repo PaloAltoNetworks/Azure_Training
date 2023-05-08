@@ -13,8 +13,6 @@
   - [3.3. Configure Panorama](#33-configure-panorama)
   - [3.4. Create Deployment Profile in Customer Support Portal (CSP)](#34-create-deployment-profile-in-customer-support-portal-csp)
   - [3.4. Configure Software License Plugin](#34-configure-software-license-plugin)
-  - [3.5. Configure Panorama Device Group and Template for VM-Series deployment](#35-configure-panorama-device-group-and-template-for-vm-series-deployment)
-    - [3.5.1 Template](#351-template)
 - [4. Deploy Azure environment](#4-deploy-azure-environment)
   - [4.1. What you'll need](#41-what-youll-need)
   - [4.2. Validate Deployment](#42-validate-deployment)
@@ -26,12 +24,14 @@
     - [5.1.3. Deploy Route Table](#513-deploy-route-table)
 - [6. Congratulations!!!](#6-congratulations)
 - [7. Lab Activity 2: Configure Panorama, Firewalls and Azure](#7-lab-activity-2-configure-panorama-firewalls-and-azure)
-  - [7.1. What You'll Do](#71-what-youll-do)
-    - [7.1.1. Configure Panorama](#711-configure-panorama)
-    - [7.1.2. Configure Webserver](#712-configure-webserver)
-    - [7.1.3. Troubleshooting 1](#713-troubleshooting-1)
-    - [7.1.4. Traffic Validation](#714-traffic-validation)
-    - [7.1.5. Autoscaling Test](#715-autoscaling-test)
+  - [7.1. Configure Panorama Template for VM-Series.](#71-configure-panorama-template-for-vm-series)
+    - [7.1.1 Template / Interface Configuration](#711-template--interface-configuration)
+    - [7.1.2 Template / Virtual Router Configuration](#712-template--virtual-router-configuration)
+  - [7.2 Configure Panorama Device Group for VM-Series.](#72-configure-panorama-device-group-for-vm-series)
+  - [7.3 Configure Webserver](#73-configure-webserver)
+  - [7.4 Troubleshooting 1](#74-troubleshooting-1)
+  - [7.5 Traffic Validation](#75-traffic-validation)
+  - [7.6 Autoscaling Test](#76-autoscaling-test)
 - [8. Congratulations!!!](#8-congratulations)
 - [9. Useful information](#9-useful-information)
   - [9.1. Firewall Password/Username](#91-firewall-passwordusername)
@@ -190,48 +190,6 @@ The Instructor will provide you during the Lab the API License Key.
 After you commited your changes your should see all information by selecting "Show Bootstrap Paramaters" under License Managers
 ![Screenshot 2023-04-28 at 10 52 55](https://user-images.githubusercontent.com/30934288/235104048-89b25d7b-b43c-4c8d-949b-241a0bf4b649.png)
 <br/><br/>
-
-## 3.5. Configure Panorama Device Group and Template for VM-Series deployment
-Here you will configure the previous create Device Group and Template on Panorama.
-
-### 3.5.1 Template 
-1. Login to you Panorama and select in the Top bar under Templates "Network"
-   ![Screenshot 2023-05-08 at 08 32 10](https://user-images.githubusercontent.com/30934288/236754423-41cc626e-4425-4f8d-9f18-36eb044050f1.png)
-2. Select on left bar "Interfaces" and click "Add Interface"
-3. Use the following seetings for the Untrust Interface (Ethernet1/1)
-   1. Slot: Slot 1
-   2. Interface Name: Ethernet1/1
-   3. Interface Type: Layer3
-   4. Config Tab
-      1. Virtual Router: Untrust-VR (Create a new)
-      2. Security Zone: Untrust (Create a new)
-      ![Screenshot 2023-05-08 at 08 37 14](https://user-images.githubusercontent.com/30934288/236754504-1f4b2069-53ac-4c3b-a530-33dc0297edab.png)
-   5. IPv4 Tab
-      1. DHCP Client
-      2. Unselect "Automatically create default route pointing to default gateway porivdd by server"
-      ![Screenshot 2023-05-08 at 08 37 25](https://user-images.githubusercontent.com/30934288/236754556-53d8e98e-3c08-4360-881f-4ee75df617ad.png)
-   6. Advanced Tab
-      1. Management Profile (Create a new profile). See settings below
-         ![Screenshot 2023-05-08 at 08 38 00](https://user-images.githubusercontent.com/30934288/236754603-e3614186-1842-4971-9f94-16434e7ea853.png)
-4. Once you completed the steps cick Ok.
-5. Use the following seetings for the Trust Interface (Ethernet1/2)
-   1. Slot: Slot 1
-   2. Interface Name: Ethernet1/1
-   3. Interface Type: Layer3
-   4. Config Tab
-      1. Virtual Router: Untrust-VR (Create a new)
-      2. Security Zone: Untrust (Create a new)
-      ![Screenshot 2023-05-08 at 08 56 54](https://user-images.githubusercontent.com/30934288/236756039-e82b9db5-2445-45c5-af5b-f3017274adec.png)
-   5. IPv4 Tab
-      1. DHCP Client
-      2. Unselect "Automatically create default route pointing to default gateway porivdd by server"
-      ![Screenshot 2023-05-08 at 08 57 03](https://user-images.githubusercontent.com/30934288/236756078-bce5fa4d-6c3a-496d-9fe7-e60cf7d98ba3.png)
-   6. Advanced Tab
-      1. Management Profile: Select the previous create the profile
-      ![Screenshot 2023-05-08 at 08 57 17](https://user-images.githubusercontent.com/30934288/236756114-932b05c8-0e76-4dbc-9fe4-641ae870120d.png)
-6. Once you completed the steps cick Ok.
-7. You should see the following now on your Panorama
-   ![Screenshot 2023-05-08 at 08 57 31](https://user-images.githubusercontent.com/30934288/236756139-85b68421-7c14-48b8-9dad-ed6bbeabdd3a.png)
 
 # 4. Deploy Azure environment
 
@@ -429,20 +387,61 @@ Congratulations,  you have successfully completed the following steps:
 <br/>
 
 # 7. Lab Activity 2: Configure Panorama, Firewalls and Azure 
+In this Lab activity you will configure on the Panorama the Device Group, Template to make sure the VM-Series is configured, setting up the Webserver, Traffic Validation, Autoscaling Test, and some Troubleshooting activities 
 
-## 7.1. What You'll Do
+## 7.1. Configure Panorama Template for VM-Series.
+Here you will configure the previous create Template on Panorama.
 
-- Configure Panorama Security Policies, NAT Policies, etc...
-- Configure Webserver
-- **TROUBLESHOOTING!!!!**
-- Validate Traffic flow
-- **TROUBLESHOOTING!!!!**
-- Autoscaling Test
-- **TROUBLESHOOTING!!!!**
+### 7.1.1 Template / Interface Configuration
+1. Login to you Panorama and select in the Top bar under Templates "Network"
+   ![Screenshot 2023-05-08 at 08 32 10](https://user-images.githubusercontent.com/30934288/236754423-41cc626e-4425-4f8d-9f18-36eb044050f1.png)
+2. Select on left bar "Interfaces" and click "Add Interface"
+3. Use the following seetings for the Untrust Interface (Ethernet1/1)
+   1. Slot: Slot 1
+   2. Interface Name: Ethernet1/1
+   3. Interface Type: Layer3
+   4. Config Tab
+      1. Virtual Router: Untrust-VR (Create a new)
+      2. Security Zone: Untrust (Create a new)
+      ![Screenshot 2023-05-08 at 08 37 14](https://user-images.githubusercontent.com/30934288/236754504-1f4b2069-53ac-4c3b-a530-33dc0297edab.png)
+   5. IPv4 Tab
+      1. DHCP Client
+      2. Unselect "Automatically create default route pointing to default gateway porivdd by server"
+      ![Screenshot 2023-05-08 at 08 37 25](https://user-images.githubusercontent.com/30934288/236754556-53d8e98e-3c08-4360-881f-4ee75df617ad.png)
+   6. Advanced Tab
+      1. Management Profile (Create a new profile). See settings below
+         ![Screenshot 2023-05-08 at 08 38 00](https://user-images.githubusercontent.com/30934288/236754603-e3614186-1842-4971-9f94-16434e7ea853.png)
+4. Once you completed the steps cick Ok.
+5. Use the following seetings for the Trust Interface (Ethernet1/2)
+   1. Slot: Slot 1
+   2. Interface Name: Ethernet1/1
+   3. Interface Type: Layer3
+   4. Config Tab
+      1. Virtual Router: Untrust-VR (Create a new)
+      2. Security Zone: Untrust (Create a new)
+      ![Screenshot 2023-05-08 at 08 56 54](https://user-images.githubusercontent.com/30934288/236756039-e82b9db5-2445-45c5-af5b-f3017274adec.png)
+   5. IPv4 Tab
+      1. DHCP Client
+      2. Unselect "Automatically create default route pointing to default gateway porivdd by server"
+      ![Screenshot 2023-05-08 at 08 57 03](https://user-images.githubusercontent.com/30934288/236756078-bce5fa4d-6c3a-496d-9fe7-e60cf7d98ba3.png)
+   6. Advanced Tab
+      1. Management Profile: Select the previous create the profile
+      ![Screenshot 2023-05-08 at 08 57 17](https://user-images.githubusercontent.com/30934288/236756114-932b05c8-0e76-4dbc-9fe4-641ae870120d.png)
+6. Once you completed the steps cick Ok.
+7. You should see the following now on your Panorama
+   ![Screenshot 2023-05-08 at 08 57 31](https://user-images.githubusercontent.com/30934288/236756139-85b68421-7c14-48b8-9dad-ed6bbeabdd3a.png)
+
+### 7.1.2 Template / Virtual Router Configuration
+1. Login to you Panorama and select in the Top bar under Templates "Network"
+   ![Screenshot 2023-05-08 at 08 32 10](https://user-images.githubusercontent.com/30934288/236754423-41cc626e-4425-4f8d-9f18-36eb044050f1.png)
+2. Select on left bar "Virtual Routers"
+3. Select at first the previous created "Untrust-VR"
+   1. Under "Static Routes" create the 
 
 <br/>
 
-### 7.1.1. Configure Panorama
+## 7.2 Configure Panorama Device Group for VM-Series.
+Here you will configure the previous create Device Group on Panorama.
 
 1. Login into the Panorama with your Student Account
 2. In the Panorama go to the Policies tab and make sure your Student Device Group is select. Under Security Policies you should see the following rules:
@@ -472,7 +471,7 @@ Congratulations,  you have successfully completed the following steps:
 </details>
 <br/>
 
-### 7.1.2. Configure Webserver
+## 7.3 Configure Webserver
 
 1. Go to your Spoke ressource group
 2. Enable Boot diagnostics on the Webserver
@@ -485,7 +484,7 @@ Congratulations,  you have successfully completed the following steps:
 5. Are the commands working?
 6. Can you see the trafic is flowing through the firewall? **NO? WHY?**
 
-### 7.1.3. Troubleshooting 1
+## 7.4 Troubleshooting 1
 
 It looks like the no traffic is working! The question is now why it isn't working and which Troubleshooting steps you do, to find the root cause.
 
@@ -504,7 +503,7 @@ Here some thinkgs you should have a look now.
 If you have fixed the traffic issue go back to [Configure Webserver](#configure-webserver) section.
 If not review again your Config or go the [Cheating Section](#cheating-section)
 
-### 7.1.4. Traffic Validation
+## 7.5 Traffic Validation
 
 If you got the all traffic working you can now start with testing of the environment.
 
@@ -514,7 +513,7 @@ If you got the all traffic working you can now start with testing of the environ
 
 <br/>
 
-### 7.1.5. Autoscaling Test
+## 7.6 Autoscaling Test
 In this section we will test if the Scale out/in is working and how you can test it
 
 1. Install a second spoke application. Use [Deploy Spoke ressource](#deploy-spoke-ressource) section
