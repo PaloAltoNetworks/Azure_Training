@@ -54,7 +54,7 @@ As part of the workshop you will learn to deploy the VM-Series on a Common model
 ## 2.1. Environment Overview
 ![Azure Ref Arch - Copy of Transit Common](https://user-images.githubusercontent.com/30934288/233354360-357df77a-0acc-409f-89e8-cd8b7b692a33.png)
 
-For this workshop we have automated the deployment of the lab environment and you will create a first a Panorama before we deploy the Environment. The Panorama will not directly connected to the Azure Environment what you deploy in a later stage. This is achieved via Terraform, that you will be launching as part of the lab over the Azure CLI.
+For this workshop we have automated the deployment of the lab environment and you will create a first a Panorama before we deploy the Environment. The Panorama will not be directly connected to the Azure Environment what you deploy in a later stage. This is achieved via Terraform, that you will be launching as part of the lab over the Azure CLI.
 
 <br/>
 
@@ -82,7 +82,7 @@ For this workshop we have automated the deployment of the lab environment and y
 <br/><br/>
 
 # 3. Deploy Panorama
-In this part you will deploy a single Panorama with a Public IP to garuantee internet connectivity and do a basic configuration of the Panorama. In the next step you will install the Software License plugin and configure it.
+In this part you will deploy a single Panorama with a Public IP to guarantee internet connectivity and do a basic configuration of the Panorama. In the next step you will install the Software License plugin and configure it.
 
 ## 3.1. What you'll do
 - Login to Azure
@@ -109,7 +109,7 @@ In this part you will deploy a single Panorama with a Public IP to garuantee int
 
 
 ## 3.3. Deploy Panorama in Azure
-As next we will create the Panorama from a pre-staged imgage, after successfully creating the Resource Group.
+As next we will create the Panorama from a pre-staged image, after successfully creating the Resource Group.
 
 1. Please go back to the Azure Cloud Shell
 2. In the following command updat the following variables with yours:
@@ -218,7 +218,7 @@ To complete this lab, you'll need:
     ```
     2. As output you will see the following
     ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/clonerepo.png)
-6. Now brose to the Azure Autoscaling folder
+6. Now browse to the Azure Autoscaling folder
    ```
    cd ./Azure_Training/Azure_Autoscaling_Lab/vmseries_scaleset
    ```
