@@ -8,7 +8,7 @@ outbound_lb_name             = "outbound-private-ilb"
 inbound_lb_name              = "inbound-public-elb"
 name_scale_set               = "VMSS" # the suffix
 
-tags = {"Owner"="Workshop-DeleteMe"}s
+tags = {"Owner"="Workshop-DeleteMe"}
 
 address_space = ["10.110.0.0/16"]
 
