@@ -411,13 +411,13 @@ Here you will configure the previous create Template on Panorama.
       1. Management Profile (Create a new profile). See settings below
          ![Screenshot 2023-05-08 at 08 38 00](https://user-images.githubusercontent.com/30934288/236754603-e3614186-1842-4971-9f94-16434e7ea853.png)
 4. Once you completed the steps cick Ok.
-5. Use the following seetings for the Trust Interface (Ethernet1/2)
+5. Use the following settings for the Trust Interface (Ethernet1/2)
    1. Slot: Slot 1
-   2. Interface Name: Ethernet1/1
+   2. Interface Name: Ethernet1/2
    3. Interface Type: Layer3
    4. Config Tab
-      1. Virtual Router: Untrust-VR (Create a new)
-      2. Security Zone: Untrust (Create a new)
+      1. Virtual Router: Trust-VR (Create a new)
+      2. Security Zone: Trust (Create a new)
       ![Screenshot 2023-05-08 at 08 56 54](https://user-images.githubusercontent.com/30934288/236756039-e82b9db5-2445-45c5-af5b-f3017274adec.png)
    5. IPv4 Tab
       1. DHCP Client
