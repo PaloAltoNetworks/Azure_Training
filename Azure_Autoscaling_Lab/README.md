@@ -128,7 +128,7 @@ az vm create -g [StudentRGName] -n [VM-Name] --authentication-type password --ad
 6. Check your Ressource Group in Aure if the Deployment is completed
    ![Screenshot 2023-04-26 at 17 03 30](https://user-images.githubusercontent.com/30934288/234620953-dab08ee5-a158-49c2-926a-ff088b4e32a9.png)
 7. In the Ressource Group select your NSG
-   ![Screenshot 2023-05-10 at 09 27 00](https://github.com/PaloAltoNetworks/Azure_Training/assets/30934288/f9290407-f0cc-47d2-a486-0e6ddba42c30)
+   ![Screenshot 2023-05-10 at 09 33 05](https://github.com/PaloAltoNetworks/Azure_Training/assets/30934288/80ebb6c1-839c-47bf-91cd-b5b8fb36be3d)
 8. Now create an Inbound Security Rule to allow **any** traffic to your newly created Panorama
    ![Screenshot 2023-05-10 at 09 31 41](https://github.com/PaloAltoNetworks/Azure_Training/assets/30934288/ee4c137e-df36-4e19-b7de-7d0d82ffb50c)
 9. Login to your Panorama via the Public IP associated to it
