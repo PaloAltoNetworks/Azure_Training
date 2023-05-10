@@ -138,7 +138,7 @@ az vm create -g [StudentRGName] -n [VM-Name] --authentication-type password --ad
 
 <br/>
 
-## 3.3. Configure Panorama
+## 3.4. Configure Panorama
 As next you have to confugre the Panorama.
 
 1. Login to your Panorama https://[Public-IP]
@@ -154,7 +154,7 @@ As next you have to confugre the Panorama.
 
 <br/>
 
-## 3.4. Create Deployment Profile in Customer Support Portal (CSP)
+## 3.5. Create Deployment Profile in Customer Support Portal (CSP)
 Here you will create a dedicated Flex Credits Deployment Profile for Lab. 
 
 1. Login with your PANW Credentials at the Customer Support Portal https://support.paloaltonetworks.com/
@@ -171,7 +171,7 @@ Here you will create a dedicated Flex Credits Deployment Profile for Lab.
 8. Verify that your Deployment Profile is successfully created
    ![Screenshot 2023-04-28 at 10 40 09](https://user-images.githubusercontent.com/30934288/235103850-9cd1b2d9-f585-436a-bb9a-97c1d21a9b39.png)
 
-## 3.4. Configure Software License Plugin
+## 3.6. Configure Software License Plugin
 Here you will configure the Software License Plugin in your Panorama to perform the next activities. For that you need your information from the CSP
 Follow the following guide to configure your Plugin. https://docs.paloaltonetworks.com/vm-series/11-0/vm-series-deployment/license-the-vm-series-firewall/use-panorama-based-software-firewall-license-management
 
