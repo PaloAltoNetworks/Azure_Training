@@ -4,6 +4,7 @@ resource "azurerm_resource_group" "inbound" {
 
   name     = coalesce(var.resource_group_name, "${var.name_prefix}vmss")
   location = var.location
+  tags     = merge(var.tags, var.panorama_tags) 
 }
 
 data "azurerm_resource_group" "inbound" {
