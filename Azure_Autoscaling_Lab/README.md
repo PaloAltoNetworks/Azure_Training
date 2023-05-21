@@ -10,9 +10,10 @@
   - [3.1. What you'll do](#31-what-youll-do)
   - [3.2. Deploy new Resource Group in Azure](#32-deploy-new-resource-group-in-azure)
   - [3.3 Deploy Panorama in Azure](#33-deploy-panorama-in-azure)
-  - [3.4 Configure Panorama](#34-configure-panorama)
-  - [3.5 Create Deployment Profile in Customer Support Portal (CSP)](#35-create-deployment-profile-in-customer-support-portal-csp)
-  - [3.6 Configure Software License Plugin](#36-configure-software-license-plugin)
+  - [3.4 Create Deployment Profile in Customer Support Portal (CSP)](#34-create-deployment-profile-in-customer-support-portal-csp)
+  - [3.5 Provision Panorama Serialnumber](#35-provision-panorama-serialnumber)
+  - [3.6 Configure Panorama](#36-configure-panorama)
+  - [3.7 Configure Software License Plugin](#37-configure-software-license-plugin)
 - [4. Deploy Azure environment](#4-deploy-azure-environment)
   - [4.1. What you'll need](#41-what-youll-need)
   - [4.2. Validate Deployment](#42-validate-deployment)
@@ -138,23 +139,7 @@ az vm create -g [StudentRGName] -n [VM-Name] --authentication-type password --ad
 
 <br/>
 
-## 3.4 Configure Panorama
-As next you have to confugre the Panorama.
-
-1. Login to your Panorama https://[Public-IP]
-2. In the Panorama check if you can see a Serialnummber is associated to it
-   ![Screenshot 2023-04-28 at 10 42 49](https://user-images.githubusercontent.com/30934288/235103168-d62230df-38c1-43e4-862d-7fb8c52a9d1a.png)
-3. Copy the the Serialnummber and re-enter it under the Panorama Tab -> Setup -> Management -> General Settings
-   ![Screenshot 2023-05-03 at 10 40 41](https://user-images.githubusercontent.com/30934288/235870102-b21ae1db-3df3-451e-b97d-177fb0aac110.png)
-4. Hit OK and reload the UI. Check if a pending commit on the Panorama is needed. If yes, commit to Panorama.
-5. As next Create a Device Group, Template, and Template Stack. See the picture below as example
-   ![Screenshot 2023-04-28 at 10 44 34](https://user-images.githubusercontent.com/30934288/235103331-a855e378-c39d-473a-8a74-3e3b51f60fec.png)
-   ![Screenshot 2023-04-28 at 10 44 48](https://user-images.githubusercontent.com/30934288/235103377-2ab1e849-4f35-4208-a429-628d6516bd13.png)
-6. Once you done it commit your changes to the Panorama
-
-<br/>
-
-## 3.5 Create Deployment Profile in Customer Support Portal (CSP)
+## 3.4 Create Deployment Profile in Customer Support Portal (CSP)
 Here you will create a dedicated Flex Credits Deployment Profile for Lab. 
 
 1. Login with your PANW Credentials at the Customer Support Portal https://support.paloaltonetworks.com/
@@ -171,7 +156,39 @@ Here you will create a dedicated Flex Credits Deployment Profile for Lab.
 8. Verify that your Deployment Profile is successfully created
    ![Screenshot 2023-04-28 at 10 40 09](https://user-images.githubusercontent.com/30934288/235103850-9cd1b2d9-f585-436a-bb9a-97c1d21a9b39.png)
 
-## 3.6 Configure Software License Plugin
+## 3.5 Provision Panorama Serialnumber
+
+1. Login with your PANW Credentials at the Customer Support Portal https://support.paloaltonetworks.com/
+2. On the Support Portal Page on the left side go to Assets -> Software NGFW Credits -> Details
+   ![Screenshot 2023-05-08 at 13 57 29](https://user-images.githubusercontent.com/30934288/236821175-3277edbc-d472-4e9f-b428-1831ba25b73b.png)
+3. Now Search for your previous created Azure Deployment Profile [here](#321-azure-deployment-profile)
+4. Click on the 3 dots and on **Provision Panorama**
+   ![Screenshot 2023-05-08 at 14 01 29](https://user-images.githubusercontent.com/30934288/236821233-4bd1203c-dfb7-4c7f-8a7b-6c332d5da645.png)
+5. In the new window click on **Provision** <br/>
+   ![Screenshot 2023-05-08 at 14 03 38](https://user-images.githubusercontent.com/30934288/236821269-23c45ffb-645d-4c3f-937a-22dff931cd8f.png)
+6. Once the window is closed repeat the steps from step 3
+   ![Screenshot 2023-05-08 at 14 01 29](https://user-images.githubusercontent.com/30934288/236821410-0e3495d1-2245-41ff-804c-6604ed03abe5.png)
+7. Now you can see a Serialnumber in the Window. Copy and Paste the Serialnumber
+   ![Screenshot 2023-05-08 at 14 06 13](https://user-images.githubusercontent.com/30934288/236821362-29f37909-874f-44ce-8f5a-8976f2d6c735.png)
+8. You can close the window by clicking **Cancel**
+
+## 3.6 Configure Panorama
+As next you have to confugre the Panorama.
+
+1. Login to your Panorama https://[Public-IP]
+2. In the Panorama check if you can see a Serialnummber is associated to it
+   ![Screenshot 2023-04-28 at 10 42 49](https://user-images.githubusercontent.com/30934288/235103168-d62230df-38c1-43e4-862d-7fb8c52a9d1a.png)
+3. Copy the the Serialnummber and re-enter it under the Panorama Tab -> Setup -> Management -> General Settings
+   ![Screenshot 2023-05-03 at 10 40 41](https://user-images.githubusercontent.com/30934288/235870102-b21ae1db-3df3-451e-b97d-177fb0aac110.png)
+4. Hit OK and reload the UI. Check if a pending commit on the Panorama is needed. If yes, commit to Panorama.
+5. As next Create a Device Group, Template, and Template Stack. See the picture below as example
+   ![Screenshot 2023-04-28 at 10 44 34](https://user-images.githubusercontent.com/30934288/235103331-a855e378-c39d-473a-8a74-3e3b51f60fec.png)
+   ![Screenshot 2023-04-28 at 10 44 48](https://user-images.githubusercontent.com/30934288/235103377-2ab1e849-4f35-4208-a429-628d6516bd13.png)
+6. Once you done it commit your changes to the Panorama
+
+<br/>
+
+## 3.7 Configure Software License Plugin
 Here you will configure the Software License Plugin in your Panorama to perform the next activities. For that you need your information from the CSP
 Follow the following guide to configure your Plugin. https://docs.paloaltonetworks.com/vm-series/11-0/vm-series-deployment/license-the-vm-series-firewall/use-panorama-based-software-firewall-license-management
 
