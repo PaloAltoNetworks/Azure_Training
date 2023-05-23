@@ -48,3 +48,7 @@ terraform.tfvars.json
 *.auto.tfvars
 *.auto.tfvars.json
 **/files
+
+# Unused files
+panoimage.json
+panorama.json
