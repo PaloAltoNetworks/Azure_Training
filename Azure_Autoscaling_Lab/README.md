@@ -257,10 +257,10 @@ To complete this lab, you'll need:
     
   ```
     type=dhcp-client
-    auth-key=SoftwareNGFW Plugin
-    panorama-server=SoftwareNGFW Plugin
-    dgname=Student1   #Replace it with the Name you created 
-    tplname=Workshop-Student1-ST   #Replace it with the Name you created 
+    auth-key=[Information found in SoftwareNGFW Plugin]
+    panorama-server=[PANORAMA PUBLIC IP]
+    dgname=Student1   #[Information found in SoftwareNGFW Plugin]
+    tplname=Workshop-Student1-ST   #[Information found in SoftwareNGFW Plugin]
     plugin-op-commands=panorama-licensing-mode-on
     dhcp-send-hostname=yes
     dhcp-send-client-id=yes
