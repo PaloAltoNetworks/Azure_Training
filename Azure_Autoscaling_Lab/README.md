@@ -111,12 +111,17 @@ In this part you will deploy a single Panorama with a Public IP to guarantee int
 1. The Deployment can take up to 5-15 Minutes depends which region you choose. You should see the following if the deployemt was successful
    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panorama-success.png)
 2. Click on "Go to Ressource"
-
-
+<br/>
 <br/>
 
 ## 3.3 Create Deployment Profile in Customer Support Portal (CSP)
 Here you will create a dedicated Flex Credits Deployment Profile for Lab. 
+
+<br/>
+<div style="border: 1px solid #ddd; padding: 10px; border-radius: 5px; background-color: #f9f9f9;">
+  <strong>Note:</strong> If you don't have access to the 132205 - Palo Alto Networks - Professional Services CSp Subscription will the Instructor provide you a Panorama Servial Number and a Auth Code for the Software Firewall
+</div>
+<br/>
 
 1. Login with your PANW Credentials at the Customer Support Portal https://support.paloaltonetworks.com/
 2. In the Support Portal Change the Account Seletor to 132205 - Palo Alto Networks - Professional Services
