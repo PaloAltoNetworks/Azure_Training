@@ -8,12 +8,11 @@
   - [2.2. What You'll do in the whole Lab](#22-what-youll-do-in-the-whole-lab)
 - [3. Deploy Panorama](#3-deploy-panorama)
   - [3.1. What you'll do](#31-what-youll-do)
-  - [3.2. Deploy new Resource Group in Azure](#32-deploy-new-resource-group-in-azure)
-  - [3.3 Deploy Panorama in Azure](#33-deploy-panorama-in-azure)
-  - [3.4 Create Deployment Profile in Customer Support Portal (CSP)](#34-create-deployment-profile-in-customer-support-portal-csp)
-  - [3.5 Provision Panorama Serialnumber](#35-provision-panorama-serialnumber)
-  - [3.6 License Panorama](#36-license-panorama)
-  - [3.7 Configure Software License Plugin](#37-configure-software-license-plugin)
+  - [3.2. Deploy via Azure Marketplace](#32-deploy-via-azure-marketplace)
+  - [3.3 Create Deployment Profile in Customer Support Portal (CSP)](#33-create-deployment-profile-in-customer-support-portal-csp)
+  - [3.4 Provision Panorama Serialnumber](#34-provision-panorama-serialnumber)
+  - [3.5 License Panorama](#35-license-panorama)
+  - [3.6 Configure Software License Plugin](#36-configure-software-license-plugin)
 - [4. Deploy Azure environment](#4-deploy-azure-environment)
   - [4.1. What you'll need](#41-what-youll-need)
   - [4.2. Validate Deployment](#42-validate-deployment)
@@ -87,59 +86,36 @@ In this part you will deploy a single Panorama with a Public IP to guarantee int
 
 ## 3.1. What you'll do
 - Login to Azure
-- Deploy a Resource Group for the Panorama
-- Deploy Panorama from a pre-staged image
-- Update NSG
+- Deploy Panorama via Azure Marketplace
 - Configure Panorama
-- Create Deployment Profile in CSP
-- Configure software License Plugin
+- Create Deployment Profile in CSP (if you have access)
+- Configure Software License Plugin
 
 
-## 3.2. Deploy new Resource Group in Azure
+## 3.2. Deploy via Azure Marketplace
 1. Login in to Azure Portal (https://portal.azure.com) 
 ![AzurePortal](https://user-images.githubusercontent.com/30934288/233334030-b7fb093a-5cec-4083-9779-3bf817b0c3ef.png)
-2. Open Azure Cloud Shell
-![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/AzureCLI.png)
-3. In Cloud Shell execute the following command but change before the values [StudentRGName] and [Location]
-   Available Regions are: **North Europe, East US, UK South, UAE North, Australia Central**
-   ```
-   az group create --name [StudentRGName] --location [Location] --tags Owner=Workshop-DeleteMe
-   ```
-4. The Output should looks like the following
-![Screenshot 2023-04-26 at 16 34 21](https://user-images.githubusercontent.com/30934288/234610062-a2b082b9-22b8-430b-949e-26ac35bc28bf.png)
+2. In the Home screen click on "+ Create new ressource"
+   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/create.png)
+3. In the Search the Marketplace box, enter **Palo Alto Networks Panorama**, and then click the Palo Alto Networks Panorama tile.
+![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panomarketplace.png)
+4. In the Settings page for the Panorama add the following
+   1. Create a new Ressoure Group (Workshop-StudentNAME)
+   2. Add a Panorama Name (Panorama-StudentNAME)
+   3. Change it to Username/Password and provide a proper Username and Password
+   4. Keep the all other settings for now as default
+   5. Create a Public IP
+   6. Click Next until "Review and Create"
+   7. See blow short recording
+![Panorma Marketplace](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/output.gif)
+1. The Deployment can take up to 5-15 Minutes depends which region you choose. You should see the following if the deployemt was successful
+   ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panorama-success.png)
+2. Click on "Go to Ressource"
 
-
-## 3.3 Deploy Panorama in Azure
-As next we will create the Panorama from a pre-staged image, after successfully creating the Resource Group.
-
-1. Please go back to the Azure Cloud Shell
-2. In the following command updat the following variables with yours:
-   1. [StudentRGName] #Use the same same of the previous created Resource Group in the Chapter [Deploy new Resource Group in Azure](#32-deploy-new-resource-group-in-azure)
-   2. [VM-Name]
-   3. [YourPassword] 
-
-Don't change any other variables
-
-```
-az vm create -g [StudentRGName] -n [VM-Name] --authentication-type password --admin-password [YourPassword] --image /subscriptions/d47f1af8-9795-4e86-bbce-da72cfd0f8ec/resourceGroups/ImageRG/providers/Microsoft.Compute/galleries/PsLab/images/psazurelab/versions/1.0.0 --specialized --public-ip-sku Standard  --plan-name byol --plan-publisher paloaltonetworks --plan-product panorama --size Standard_D4_v2
-```
-4. After you made the changes, execute the command in Azure Cloud Shell
-5. The Output should looks like the following
-![Screenshot 2023-04-26 at 16 49 00](https://user-images.githubusercontent.com/30934288/234614674-e175355c-7f8a-4b09-9844-483cc08c5b8f.png)
-6. Check your Ressource Group in Aure if the Deployment is completed
-   ![Screenshot 2023-04-26 at 17 03 30](https://user-images.githubusercontent.com/30934288/234620953-dab08ee5-a158-49c2-926a-ff088b4e32a9.png)
-7. In the Ressource Group select your NSG. The picture below is showing a different Name of the NSG rule, this is because of the script who is creating a rule and you can't change the name afterwards. If you want you can create a new rule that's allowing the traffic.
-   ![Screenshot 2023-05-10 at 09 33 05](https://github.com/PaloAltoNetworks/Azure_Training/assets/30934288/80ebb6c1-839c-47bf-91cd-b5b8fb36be3d)
-8. Now create an Inbound Security Rule to allow **any** traffic to your newly created Panorama
-   ![Screenshot 2023-05-10 at 09 31 41](https://github.com/PaloAltoNetworks/Azure_Training/assets/30934288/ee4c137e-df36-4e19-b7de-7d0d82ffb50c)
-9. Login to your Panorama via the Public IP associated to it
-   1.  https://[Public-IP]
-   ![Screenshot 2023-04-26 at 17 08 58](https://user-images.githubusercontent.com/30934288/234621053-6a3c2eb5-fc13-4af5-b40a-67a679aae773.png)
-10. Is the Login working? No? Why?
 
 <br/>
 
-## 3.4 Create Deployment Profile in Customer Support Portal (CSP)
+## 3.3 Create Deployment Profile in Customer Support Portal (CSP)
 Here you will create a dedicated Flex Credits Deployment Profile for Lab. 
 
 1. Login with your PANW Credentials at the Customer Support Portal https://support.paloaltonetworks.com/
@@ -156,7 +132,7 @@ Here you will create a dedicated Flex Credits Deployment Profile for Lab.
 8. Verify that your Deployment Profile is successfully created
    ![Screenshot 2023-04-28 at 10 40 09](https://user-images.githubusercontent.com/30934288/235103850-9cd1b2d9-f585-436a-bb9a-97c1d21a9b39.png)
 
-## 3.5 Provision Panorama Serialnumber
+## 3.4 Provision Panorama Serialnumber
 
 1. Login with your PANW Credentials at the Customer Support Portal https://support.paloaltonetworks.com/
 2. On the Support Portal Page on the left side go to Assets -> Software NGFW Credits -> Details
@@ -172,7 +148,7 @@ Here you will create a dedicated Flex Credits Deployment Profile for Lab.
    ![Screenshot 2023-05-08 at 14 06 13](https://user-images.githubusercontent.com/30934288/236821362-29f37909-874f-44ce-8f5a-8976f2d6c735.png)
 8. You can close the window by clicking **Cancel**
 
-## 3.6 License Panorama
+## 3.5 License Panorama
 As next you have to License the Panorama with the previous created Serialnumber from the Deployment Profile.
 
 1. Login to your Panorama https://[Public-IP]
@@ -184,7 +160,7 @@ As next you have to License the Panorama with the previous created Serialnumber 
 
 <br/>
 
-## 3.7 Configure Software License Plugin
+## 3.6 Configure Software License Plugin
 Here you will configure the Software License Plugin in your Panorama to perform the next activities. For that you need your information from the CSP
 Follow the following guide to configure your Plugin. https://docs.paloaltonetworks.com/vm-series/11-0/vm-series-deployment/license-the-vm-series-firewall/use-panorama-based-software-firewall-license-management
 
