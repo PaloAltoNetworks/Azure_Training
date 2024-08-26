@@ -106,7 +106,7 @@ In this part you will deploy a single Panorama with a Public IP to guarantee int
    4. Keep the all other settings for now as default
    5. Create a Public IP
    6. Click Next until "Review and Create"
-   7. See blow short recording
+   7. See below <br/>
 ![Panorma Marketplace](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/output.gif)
 1. The Deployment can take up to 5-15 Minutes depends which region you choose. You should see the following if the deployemt was successful
    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panorama-success.png)
