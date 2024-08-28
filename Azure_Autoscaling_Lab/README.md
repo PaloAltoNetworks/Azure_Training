@@ -102,11 +102,13 @@ In this part you will deploy a single Panorama with a Public IP to guarantee int
 4. In the Settings page for the Panorama add the following
    1. Create a new Ressoure Group (Workshop-StudentNAME)
    2. Add a Panorama Name (Panorama-StudentNAME)
-   3. Change it to Username/Password and provide a proper Username and Password
-   4. Keep the all other settings for now as default
-   5. Create a Public IP
-   6. Click Next until "Review and Create"
-   7. See below <br/>
+   3. Choose a region
+   4. Change the instance type to Standard_D16s_v3
+   5. Change it to Username/Password and provide a proper Username and Password
+   6. Keep the all other settings for now as default
+   7. Create a Public IP
+   8. Click Next until "Review and Create"
+   9. See below <br/>
 ![Panorma Marketplace](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/output.gif)
 1. The Deployment can take up to 5-15 Minutes depends which region you choose. You should see the following if the deployemt was successful
    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panorama-success.png)
