@@ -375,6 +375,7 @@ In this Lab part you will create a dedicated spoke ressource group with an Webse
 # 6. Congratulations!!!
 
 Congratulations,  you have successfully completed the following steps:
+- Deployed Panorama through Azure Marketplace
 - Automated Deployment of your Hub Ressource Group with Terraform
 - Deployment of your Spoke Ressource Group with ARM Template
 - Redirect Traffic of your Spoke Ressource Group to the Internal Load Balancer in the Hub Ressource Group
