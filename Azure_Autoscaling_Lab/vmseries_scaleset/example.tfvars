@@ -78,12 +78,12 @@ public_frontend_ips = {
 
 olb_private_ip = "10.110.0.21"
 
-inbound_vmseries_version  = "10.2.1"
+inbound_vmseries_version  = "11.2.0"
 inbound_vmseries_vm_size  = "Standard_D3_v2"
 common_vmseries_sku       = "byol"
 
-inbound_count_minimum  = 2
-inbound_count_maximum  = 3
+inbound_count_minimum  = 1
+inbound_count_maximum  = 2
 
 
 autoscale_metrics = {
