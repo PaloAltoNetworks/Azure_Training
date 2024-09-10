@@ -90,6 +90,7 @@ In this part you will deploy a single Panorama with a Public IP to guarantee int
 - Configure Panorama
 - Create Deployment Profile in CSP (if you have access)
 - Configure Software License Plugin
+- Troubleshooting Panorama connectivity
 
 
 ## 3.2. Deploy via Azure Marketplace
@@ -113,6 +114,13 @@ In this part you will deploy a single Panorama with a Public IP to guarantee int
 5. The Deployment can take up to 5-15 Minutes depends which region you choose. You should see the following if the deployemt was successful
    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panorama-success.png)
 6. Click on "Go to Ressource"
+<br/>
+<br/>
+<details>
+    <summary style="color:black">Expand For Details for Panorama troubleshooting</summary>
+Did you check the Panorama NSG if it allows Panorama managment inbound traffic on the dedicated Panorama ports?
+  </details>
+
 <br/>
 <br/>
 
