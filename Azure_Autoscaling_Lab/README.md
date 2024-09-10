@@ -115,12 +115,10 @@ In this part you will deploy a single Panorama with a Public IP to guarantee int
    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/panorama-success.png)
 6. Click on "Go to Ressource"
 <br/>
-<br/>
 <details>
-    <summary style="color:black">Expand For Details for Panorama troubleshooting</summary>
+    <summary style="color:black">**Expand For Details for Panorama troubleshooting**</summary>
 Did you check the Panorama NSG if it allows Panorama managment inbound traffic on the dedicated Panorama ports?
   </details>
-
 <br/>
 <br/>
 
