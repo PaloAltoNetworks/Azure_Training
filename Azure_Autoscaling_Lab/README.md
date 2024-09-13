@@ -36,8 +36,9 @@
 - [9. Useful information](#9-useful-information)
   - [9.1. Firewall Password/Username](#91-firewall-passwordusername)
   - [9.2. Firewall IP Information](#92-firewall-ip-information)
-- [10. Cheating Section](#10-cheating-section)
-  - [10.1. Troubleshooting](#101-troubleshooting)
+- [10. Proof Lab completion](#10-proof-lab-completion)
+- [11. Cheating Section](#11-cheating-section)
+  - [11.1. Troubleshooting](#111-troubleshooting)
 
 # 1. Palo Alto Networks Azure Autoscaling Lab Guide
 
@@ -116,7 +117,7 @@ In this part you will deploy a single Panorama with a Public IP to guarantee int
 6. Click on "Go to Ressource"
 <br/>
 <details>
-    <summary style="color:black">**Expand For Details for Panorama troubleshooting**</summary>
+    <summary style="color:black">Expand For Details for Panorama troubleshooting</summary>
 Did you check the Panorama NSG if it allows Panorama managment inbound traffic on the dedicated Panorama ports?
   </details>
 <br/>
@@ -596,12 +597,18 @@ In this section will show you how to find your IP Information in a Virtual Machi
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/vmss3.png)
 6. Repeat the steps for all other Firewalls to obtain the IP Information of your Firewalls.
 
+# 10. Proof Lab completion
 
-# 10. Cheating Section 
+Please provide Screenshots of the Autoscaling events to your Course Instructor to proof the Lab completion.
+You can upload the Screenshots to the following folder [Folder](https://example.com/public-folder-link)
+
+**NOTE** Please rename the file with **YOURNAME** 
+
+# 11. Cheating Section 
 
 Use it only in case you don't find a solution
 
-## 10.1. Troubleshooting
+## 11.1. Troubleshooting
 
 <details>
   <summary style="color:black">Secret for [Troubleshooting 1](#troubleshooting-1) :joy:</summary>
