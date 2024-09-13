@@ -600,7 +600,7 @@ In this section will show you how to find your IP Information in a Virtual Machi
 # 10. Proof Lab completion
 
 Please provide Screenshots of the Autoscaling events to your Course Instructor to proof the Lab completion.
-You can upload the Screenshots to the following folder [Folder](https://example.com/public-folder-link)
+You can upload the Screenshots to the following folder [Folder](https://drive.google.com/drive/folders/1Ngjki51VaVi_IsG7uJhybw2ftokVxsLt?usp=drive_link)
 
 **NOTE** Please rename the file with **YOURNAME** 
 
