@@ -33,10 +33,10 @@
   - [7.5 Traffic Validation](#75-traffic-validation)
   - [7.6 Autoscaling Test](#76-autoscaling-test)
 - [8. Congratulations!!!](#8-congratulations)
-- [9. Useful information](#9-useful-information)
-  - [9.1. Firewall Password/Username](#91-firewall-passwordusername)
-  - [9.2. Firewall IP Information](#92-firewall-ip-information)
-- [10. Proof Lab completion](#10-proof-lab-completion)
+- [9. Proof Lab completion](#9-proof-lab-completion)
+- [10. Useful information](#10-useful-information)
+  - [10.1. Firewall Password/Username](#101-firewall-passwordusername)
+  - [10.2. Firewall IP Information](#102-firewall-ip-information)
 - [11. Cheating Section](#11-cheating-section)
   - [11.1. Troubleshooting](#111-troubleshooting)
 
@@ -560,16 +560,19 @@ Congratulations,  you have successfully completed the following steps:
 - Troubleshooting
 - Traffic Flow Validation
 - Autoscaling Validation/Test
-
-
-<br/>
-<br/>
-<br/>
-<br/>
 <br/>
 
-# 9. Useful information
-## 9.1. Firewall Password/Username
+# 9. Proof Lab completion
+
+Please provide Screenshots of the Autoscaling events to your Course Instructor to proof the Lab completion.
+You can upload the Screenshots to the following folder [Folder](https://drive.google.com/drive/folders/1Ngjki51VaVi_IsG7uJhybw2ftokVxsLt?usp=drive_link)
+
+**NOTE** Please rename the file with **YOURNAME** 
+<br/>
+<br/>
+
+# 10. Useful information
+## 10.1. Firewall Password/Username
 to obtain your password for the firewall you have to do the following steps
 
 1. Open Azure Cloud Shell
@@ -584,7 +587,7 @@ to obtain your password for the firewall you have to do the following steps
    ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/username_password.png)
 4. After that you can login into your Firewalls over the Public IP attached to the instances (NOT over the Frontend IP of Public Load Balancer) If you don't know how to find the PIP of your firewall go please to the [Firewall IP Information](#firewall-ip-information) section
 
-## 9.2. Firewall IP Information
+## 10.2. Firewall IP Information
 In this section will show you how to find your IP Information in a Virtual Machine Scale Set (VMSS)
 1. Go to your ressource group where your VMSS is deployed
 2. In the ressource group select your VMSS object (example: inbound-VMSS)
@@ -596,13 +599,7 @@ In this section will show you how to find your IP Information in a Virtual Machi
 5. In the Overview section of your instance you can see now the Private and Public IP of your Firewall
 ![](https://raw.githubusercontent.com/PaloAltoNetworks/Azure_Training/main/Azure_Autoscaling_Lab/Images/vmss3.png)
 6. Repeat the steps for all other Firewalls to obtain the IP Information of your Firewalls.
-
-# 10. Proof Lab completion
-
-Please provide Screenshots of the Autoscaling events to your Course Instructor to proof the Lab completion.
-You can upload the Screenshots to the following folder [Folder](https://drive.google.com/drive/folders/1Ngjki51VaVi_IsG7uJhybw2ftokVxsLt?usp=drive_link)
-
-**NOTE** Please rename the file with **YOURNAME** 
+<br/>
 
 # 11. Cheating Section 
 
